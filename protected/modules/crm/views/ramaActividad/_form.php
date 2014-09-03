@@ -21,9 +21,12 @@
             ?>
 
             <?php echo $form->textFieldGroup($model, 'nombre', array('maxlength' => 45)) ?>
-
-
-            <?php // echo $form->dropDownListGroup($model, 'sector_detalle_id', array('wrapperHtmlOptions' => array('class' => 'col-sm-12',), 'widgetOptions' => array('data' => array('' => ' -- Seleccione -- ') + CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()), 'htmlOptions' => array(),))) ?>
+            <?php
+            if ($model->isNewRecord) {
+                $data_sector = CHtml::listData(Sector::model()->findAll(), 'id', Sector::representingColumn());
+                $data_subsector = null;
+            }
+            ?>
             <?php
             echo $form->select2Group(
                     $model, 'sector_id', array(
@@ -31,7 +34,7 @@
                     'class' => 'col-sm-12',
                 ),
                 'widgetOptions' => array(
-                    'data' => CHtml::listData(Sector::model()->findAll(), 'id', Sector::representingColumn()),
+                    'data' => $data_sector ? $data_sector : array(null=> ' -- Ninguno -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
@@ -47,7 +50,7 @@
                     'class' => 'col-sm-12',
                 ),
                 'widgetOptions' => array(
-                    'data' => CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()),
+                    'data' => $data_subsector ? $data_subsector :array(null=> ' -- Ninguno -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
