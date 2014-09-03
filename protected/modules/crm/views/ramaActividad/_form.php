@@ -2,6 +2,7 @@
 /** @var RamaActividadController $this */
 /** @var RamaActividad $model */
 /** @var AweActiveForm $form */
+Util::tsRegisterAssetJs('_form.js');
 ?>
 <div class="col-lg-8">
     <div class="panel panel-primary">
@@ -31,10 +32,10 @@
             echo $form->select2Group(
                     $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12',
+                    'class' => 'col-sm-12 fix',
                 ),
                 'widgetOptions' => array(
-                    'data' => $data_sector ? $data_sector : array(null=> ' -- Ninguno -- '),
+                    'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
@@ -50,7 +51,7 @@
                     'class' => 'col-sm-12',
                 ),
                 'widgetOptions' => array(
-                    'data' => $data_subsector ? $data_subsector :array(null=> ' -- Ninguno -- '),
+                    'data' => $data_subsector ? $data_subsector : array(null => ' -- Ninguno -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
