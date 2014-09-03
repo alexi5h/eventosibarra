@@ -26,7 +26,23 @@
             <?php // echo $form->dropDownListGroup($model, 'sector_detalle_id', array('wrapperHtmlOptions' => array('class' => 'col-sm-12',), 'widgetOptions' => array('data' => array('' => ' -- Seleccione -- ') + CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()), 'htmlOptions' => array(),))) ?>
             <?php
             echo $form->select2Group(
-                    $model, 'sector_detalle_id', array(
+                    $model, 'sector_id', array(
+                'wrapperHtmlOptions' => array(
+                    'class' => 'col-sm-12',
+                ),
+                'widgetOptions' => array(
+                    'data' => CHtml::listData(Sector::model()->findAll(), 'id', Sector::representingColumn()),
+                    'asDropDownList' => true,
+                    'options' => array(
+                        'tokenSeparators' => array(',', ' ')
+                    )
+                )
+                    )
+            );
+            ?>
+            <?php
+            echo $form->select2Group(
+                    $model, 'subsector_id', array(
                 'wrapperHtmlOptions' => array(
                     'class' => 'col-sm-12',
                 ),
@@ -59,3 +75,4 @@
             </div>
         </div>
     </div>
+</div>

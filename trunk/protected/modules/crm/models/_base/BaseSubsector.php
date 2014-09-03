@@ -12,11 +12,10 @@
  * @property integer $id
  * @property string $nombre
  * @property string $estado
- * @property integer $sector_economico_id
+ * @property integer $sector_id
  *
- * @property Participante[] $participantes
  * @property RamaActividad[] $ramaActividads
- * @property Sector $sectorEconomico
+ * @property Sector $sector
  */
 abstract class BaseSubsector extends AweActiveRecord {
 
@@ -34,20 +33,19 @@ abstract class BaseSubsector extends AweActiveRecord {
 
     public function rules() {
         return array(
-            array('nombre, estado, sector_economico_id', 'required'),
-            array('sector_economico_id', 'numerical', 'integerOnly'=>true),
+            array('nombre, estado, sector_id', 'required'),
+            array('sector_id', 'numerical', 'integerOnly'=>true),
             array('nombre', 'length', 'max'=>45),
             array('estado', 'length', 'max'=>8),
             array('estado', 'in', 'range' => array('ACTIVO','INACTIVO')), // enum,
-            array('id, nombre, estado, sector_economico_id', 'safe', 'on'=>'search'),
+            array('id, nombre, estado, sector_id', 'safe', 'on'=>'search'),
         );
     }
 
     public function relations() {
         return array(
-            'participantes' => array(self::HAS_MANY, 'Participante', 'subsector_id'),
-            'ramaActividads' => array(self::HAS_MANY, 'RamaActividad', 'sector_detalle_id'),
-            'sectorEconomico' => array(self::BELONGS_TO, 'Sector', 'sector_economico_id'),
+            'ramaActividads' => array(self::HAS_MANY, 'RamaActividad', 'subsector_id'),
+            'sector' => array(self::BELONGS_TO, 'Sector', 'sector_id'),
         );
     }
 
@@ -59,10 +57,9 @@ abstract class BaseSubsector extends AweActiveRecord {
                 'id' => Yii::t('app', 'ID'),
                 'nombre' => Yii::t('app', 'Nombre'),
                 'estado' => Yii::t('app', 'Estado'),
-                'sector_economico_id' => Yii::t('app', 'Sector Economico'),
-                'participantes' => null,
+                'sector_id' => Yii::t('app', 'Sector'),
                 'ramaActividads' => null,
-                'sectorEconomico' => null,
+                'sector' => null,
         );
     }
 
@@ -72,7 +69,7 @@ abstract class BaseSubsector extends AweActiveRecord {
         $criteria->compare('id', $this->id);
         $criteria->compare('nombre', $this->nombre, true);
         $criteria->compare('estado', $this->estado, true);
-        $criteria->compare('sector_economico_id', $this->sector_economico_id);
+        $criteria->compare('sector_id', $this->sector_id);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
