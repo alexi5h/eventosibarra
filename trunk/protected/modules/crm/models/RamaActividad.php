@@ -21,16 +21,16 @@ class RamaActividad extends BaseRamaActividad {
     }
 
     public function attributeLabels() {
-        return array(
-            'id' => Yii::t('app', 'ID'),
-            'nombre' => Yii::t('app', 'Nombre'),
-            'estado' => Yii::t('app', 'Estado'),
-            'sector_detalle_id' => Yii::t('app', 'Subsector'),
+
+        return array_merge(parent::attributeLabels(), array(
             'sector_id' => Yii::t('app', 'Sector'),
-            'actividads' => null,
-            'participantes' => null,
-            'sectorDetalle' => null,
-        );
+        ));
+    }
+
+    public function rules() {
+        return array_merge(parent::rules(), array(
+            array('sector_id', 'required')
+        ));
     }
 
     /**

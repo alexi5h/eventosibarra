@@ -100,6 +100,29 @@ class SubsectorController extends AweController {
         ));
     }
 
+    public function actionAjaxGetSubsectorBySector() {
+        if (Yii::app()->request->isAjaxRequest) {
+            if (isset($_POST['sector_id']) && $_POST['sector_id'] !='') {
+                $data = Subsector::model()->activos()->findAll(array(
+                    "condition" => "sector_id =:sector_id",
+                    "order" => "nombre",
+                    "params" => array(':sector_id' => $_POST['sector_id'],)
+                ));
+                if ($data) {
+                    $data = CHtml::listData($data, 'id', 'nombre');
+                    echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- Subsectores -', true);
+                    foreach ($data as $value => $name) {
+                        echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
+                    }
+                } else {
+                    echo CHtml::tag('option', array('value' => null), '- No existen opciones -', true);
+                }
+            } else {
+                echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- Seleccione un sector -', true);
+            }
+        }
+    }
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
