@@ -4,6 +4,7 @@ Yii::import('application.modules.crm.models._base.BaseParticipante');
 
 class Participante extends BaseParticipante
 {
+    
     /**
      * @return Participante
      */
