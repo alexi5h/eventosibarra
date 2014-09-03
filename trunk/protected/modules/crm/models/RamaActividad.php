@@ -7,6 +7,8 @@ class RamaActividad extends BaseRamaActividad {
     const ESTADO_ACTIVO = 'ACTIVO';
     const ESTADO_INACTIVO = 'INACTIVO';
 
+    public $sector_id;
+
     public function scopes() {
         return array(
             'activos' => array(
@@ -15,6 +17,19 @@ class RamaActividad extends BaseRamaActividad {
                     ':estado' => self::ESTADO_ACTIVO,
                 ),
             ),
+        );
+    }
+
+    public function attributeLabels() {
+        return array(
+            'id' => Yii::t('app', 'ID'),
+            'nombre' => Yii::t('app', 'Nombre'),
+            'estado' => Yii::t('app', 'Estado'),
+            'sector_detalle_id' => Yii::t('app', 'Subsector'),
+            'sector_id' => Yii::t('app', 'Sector'),
+            'actividads' => null,
+            'participantes' => null,
+            'sectorDetalle' => null,
         );
     }
 

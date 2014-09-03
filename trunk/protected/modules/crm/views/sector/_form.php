@@ -15,7 +15,7 @@
                 'type' => 'horizontal',
                 'id' => 'sector-form',
                 'enableAjaxValidation' => true,
-                'clientOptions' => array('validateOnSubmit' => false, 'validateOnChange' => true,),
+                'clientOptions' => array('validateOnSubmit' => true, 'validateOnChange' => false,),
                 'enableClientValidation' => false,
             ));
             ?>
@@ -24,7 +24,6 @@
 
             <?php echo $form->textFieldGroup($model, 'nombre', array('maxlength' => 45)) ?>
 
-            <?php echo $form->dropDownListGroup($model, 'estado', array('wrapperHtmlOptions' => array('class' => 'col-sm-12',), 'widgetOptions' => array('data' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',), 'htmlOptions' => array(),))) ?>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <?php
