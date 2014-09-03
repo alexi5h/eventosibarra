@@ -169,7 +169,7 @@ class UiController extends Controller {
             if ($model->validate()) {
                 $newPwd = CrugeUtil::passwordGenerator();
                 Yii::app()->user->um->changePassword($model->getModel(), $newPwd);
-                Yii::app()->crugemailer->sendPasswordTo($model->getModel(), $newPwd);
+                //Yii::app()->crugemailer->sendPasswordTo($model->getModel(), $newPwd);
                 Yii::app()->user->um->save($model->getModel());
 
                 Yii::app()->user->setFlash(
@@ -240,7 +240,7 @@ class UiController extends Controller {
                 if ($newPwd != '') {
                     Yii::log("\n\n***NUEVA CLAVE***\n\n", "info");
                     Yii::app()->user->um->changePassword($model, $newPwd);
-                    Yii::app()->crugemailer->sendPasswordTo($model, $newPwd);
+                    //Yii::app()->crugemailer->sendPasswordTo($model, $newPwd);
                 }
 
                 if (Yii::app()->user->um->save($model, 'update')) {
@@ -385,16 +385,16 @@ class UiController extends Controller {
             // lo activa inmediatamente y le manda la clave al usuario
             $model->state = CRUGEUSERSTATE_ACTIVATED;
             Yii::app()->user->um->save($model);
-            Yii::app()->crugemailer->sendPasswordTo($model, $newPwd);
+            //Yii::app()->crugemailer->sendPasswordTo($model, $newPwd);
         }
         if ($opt == CRUGE_ACTIVATION_OPTION_EMAIL) {
             // queda en estado no activado, pero envia un email para que
             // el usuario lo active
-            Yii::app()->crugemailer->sendRegistrationEmail($model, $newPwd);
+            //Yii::app()->crugemailer->sendRegistrationEmail($model, $newPwd);
         }
         if ($opt == CRUGE_ACTIVATION_OPTION_MANUAL) {
             // lo activa manualmente, envia un email de espera por activacion manual
-            Yii::app()->crugemailer->sendWaitForActivation($model, $newPwd);
+            //Yii::app()->crugemailer->sendWaitForActivation($model, $newPwd);
         }
     }
 
@@ -1171,7 +1171,7 @@ class UiController extends Controller {
             Yii::app()->user->um->changePassword($model, $newPassword);
             Yii::app()->user->um->generateAuthenticationKey($model);
             Yii::app()->user->um->save($model);
-            Yii::app()->crugemailer->sendRegistrationEmail($model, $newPassword);
+            //Yii::app()->crugemailer->sendRegistrationEmail($model, $newPassword);
             echo CrugeTranslator::t("Correo enviado");
         } else {
             echo CrugeTranslator::t("Usuario no hallado");
