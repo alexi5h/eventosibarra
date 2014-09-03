@@ -7,6 +7,7 @@
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'My Web Application',
+    'language' => 'es',
     'theme' => 'orange',
     // preloading 'log' component
     'preload' => array('log', 'bootstrap'),
@@ -120,7 +121,7 @@ return array(
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
-            'errorAction' => 'site/error',
+            'errorAction' => 'crm/participante/admin',
         ),
         'log' => array(
             'class' => 'CLogRouter',
