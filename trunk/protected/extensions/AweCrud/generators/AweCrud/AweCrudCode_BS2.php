@@ -1,5 +1,4 @@
 <?php
-
 /**
  * AweCrudCode class file.
  * @author Ricardo Obregón <ricardo@obregon.co>
@@ -10,13 +9,14 @@
  * @version 0.1
  * @date 2013/06/13
  * - Cambios en generateActiveField:
- *      textAreaGroup: original=('rows'=>6) custom=('rows'=>3)
+ *      textAreaRow: original=('rows'=>6) custom=('rows'=>3)
  */
+
 Yii::import('gii.generators.crud.CrudCode');
 Yii::import('ext.AweCrud.helpers.*');
 
-class AweCrudCode extends CrudCode {
-
+class AweCrudCode extends CrudCode
+{
     /** @var string The type of authentication */
     public $authtype = 'auth_none';
 
@@ -28,7 +28,9 @@ class AweCrudCode extends CrudCode {
 
     /** @var string The controller base class name */
     public $baseControllerClass = 'AweController';
+
     public $layout = '//layouts/column2';
+
     public $dateTypes = array('datetime', 'date', 'time', 'timestamp');
     public $booleanTypes = array('tinyint(1)', 'boolean', 'bool', 'bit');
     public $emailFields = array('email', 'e-mail', 'email_address', 'e-mail_address', 'emailaddress', 'e-mailaddress');
@@ -54,6 +56,7 @@ class AweCrudCode extends CrudCode {
         'created_time',
         'createdtime',
         'fecha_creacion'
+        
     );
     public $update_time = array(
         'changed',
@@ -68,6 +71,7 @@ class AweCrudCode extends CrudCode {
         'updatedat',
         'fecha_actualizacion'
     );
+    
     public $descriptionFields = array(
         'description',
         'details',
@@ -75,13 +79,16 @@ class AweCrudCode extends CrudCode {
         'detalles',
         'detalle',
     );
+
     public $validRelatedRecordBehaviors = array(
         'ActiveRecordRelation' => 'EActiveRecordRelationBehavior',
     );
 
-    public function getUseRelatedRecordBehavior() {
+    public function getUseRelatedRecordBehavior()
+    {
         return array_intersect_key(
-                $this->validRelatedRecordBehaviors, CActiveRecord::model($this->modelClass)->behaviors()
+            $this->validRelatedRecordBehaviors,
+            CActiveRecord::model($this->modelClass)->behaviors()
         );
     }
 
@@ -93,11 +100,13 @@ class AweCrudCode extends CrudCode {
      * <li>Adds the rules for the new attributes in the code generation form: authtype; validation.</li>
      * </ul>
      */
-    public function rules() {
+    public function rules()
+    {
         return array_merge(
-                parent::rules(), array(
-            array('defaultAction, authtype, validation', 'required'),
-                )
+            parent::rules(),
+            array(
+                array('defaultAction, authtype, validation', 'required'),
+            )
         );
     }
 
@@ -109,38 +118,40 @@ class AweCrudCode extends CrudCode {
      * <li>Adds the labels for the new attributes in the code generation form: authtype; validation.</li>
      * </ul>
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return array_merge(
-                parent::attributeLabels(), array(
-            'defaultAction' => 'Default Action',
-            'authtype' => 'Authentication type',
-            'validation' => 'Enable ajax validation',
-                )
+            parent::attributeLabels(),
+            array(
+                'defaultAction' => 'Default Action',
+                'authtype' => 'Authentication type',
+                'validation' => 'Enable ajax validation',
+            )
         );
     }
 
-    /* public function generateActiveRow($modelClass, $column)
-      {
-      if ($column->type === 'boolean') {
-      return "\$form->checkBoxRow(\$model,'{$column->name}')";
-      } else {
-      if (stripos($column->dbType, 'text') !== false) {
-      return "\$form->textAreaGroup(\$model,'{$column->name}',array('rows'=>6, 'cols'=>50, 'class' => 'span8'))";
-      } else {
-      if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
-      $inputField = 'passwordFieldGroup';
-      } else {
-      $inputField = 'textFieldRow';
-      }
+    /*public function generateActiveRow($modelClass, $column)
+    {
+        if ($column->type === 'boolean') {
+            return "\$form->checkBoxRow(\$model,'{$column->name}')";
+        } else {
+            if (stripos($column->dbType, 'text') !== false) {
+                return "\$form->textAreaRow(\$model,'{$column->name}',array('rows'=>6, 'cols'=>50, 'class' => 'span8'))";
+            } else {
+                if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
+                    $inputField = 'passwordFieldRow';
+                } else {
+                    $inputField = 'textFieldRow';
+                }
 
-      if ($column->type !== 'string' || $column->size === null) {
-      return "\$form->{$inputField}(\$model, '{$column->name}', array('class' => 'span5'))";
-      } else {
-      return "\$form->{$inputField}(\$model, '{$column->name}', array('class' => 'span5', 'maxlength' => $column->size))";
-      }
-      }
-      }
-      } */
+                if ($column->type !== 'string' || $column->size === null) {
+                    return "\$form->{$inputField}(\$model, '{$column->name}', array('class' => 'span5'))";
+                } else {
+                    return "\$form->{$inputField}(\$model, '{$column->name}', array('class' => 'span5', 'maxlength' => $column->size))";
+                }
+            }
+        }
+    }*/
 
     /**
      * Generates and returns the view source code line
@@ -155,7 +166,8 @@ class AweCrudCode extends CrudCode {
      * @param CDbColumnSchema $column The column.
      * @return string The source code line for the active field.
      */
-    public function generateActiveField($modelClass, $column) {
+    public function generateActiveField($modelClass, $column)
+    {
         if ($column->isForeignKey) {
             $relation = $this->findRelation($modelClass, $column);
             $relatedModelClass = $relation[3];
@@ -164,19 +176,23 @@ class AweCrudCode extends CrudCode {
 
             $prompt = '';
             if ($column->allowNull && $column->defaultValue == null) {
-                $prompt = "'empty' => Yii::t('AweApp', 'None')";
+                $prompt = ", array('prompt' => Yii::t('AweApp', 'None'))";
             }
 
             if ($this->getUseRelatedRecordBehavior()) {
                 //requires EActiveRecordRelationBehavior
-                return "\$form->dropDownListGroup(\$model, '{$relation[0]}', array('wrapperHtmlOptions' => array('class' => 'col-sm-12',), 'widgetOptions' => array('data' => CHtml::listData({$relatedModelClass}::model()->findAll(), '{$foreignPk}', {$relatedModelClass}::representingColumn()), 'htmlOptions' => array($prompt),)))";
+                return "\$form->dropDownListRow(\$model, '{$relation[0]}', CHtml::listData({$relatedModelClass}::model()->findAll(), '{$foreignPk}', {$relatedModelClass}::representingColumn()){$prompt})";
             }
-            return "\$form->dropDownListGroup( \$model, '{$column->name}', array( 'wrapperHtmlOptions' => array('class' => 'col-sm-12',),'widgetOptions' => array('data' =>  array('' => ' -- Seleccione -- ') + CHtml::listData({$relatedModelClass}::model()->findAll(), '{$foreignPk}', {$relatedModelClass}::representingColumn()),'htmlOptions' => array($prompt),) ))";
+
+            return "\$form->dropDownListRow(\$model, '{$column->name}', array('' => ' -- Seleccione -- ') + CHtml::listData({$relatedModelClass}::model()->findAll(), '{$foreignPk}', {$relatedModelClass}::representingColumn()){$prompt})";
         }
 
-        if (strtoupper($column->dbType) == 'TINYINT(1)' || strtoupper($column->dbType) == 'BIT' || strtoupper($column->dbType) == 'BOOL' || strtoupper($column->dbType) == 'BOOLEAN'
+        if (strtoupper($column->dbType) == 'TINYINT(1)'
+            || strtoupper($column->dbType) == 'BIT'
+            || strtoupper($column->dbType) == 'BOOL'
+            || strtoupper($column->dbType) == 'BOOLEAN'
         ) {
-            return "\$form->checkboxGroup(\$model, '{$column->name}')";
+            return "\$form->checkBoxRow(\$model, '{$column->name}')";
         } else {
 //            die("entra");
 //            var_dump($column->dbType);
@@ -188,24 +204,25 @@ class AweCrudCode extends CrudCode {
                 $values = explode(",", $values);
 //                $valuesfinal = "'' => ' -- Seleccione -- '";
                 $valuesfinal = "";
-                foreach ($values as $value) {
-                    $valuesfinal .=$value . " => " . $value . ",";
+                foreach($values as $value){
+                   $valuesfinal .=$value . " => " . $value .  ",";
                 }
-                return "\$form->dropDownListGroup(\$model, '{$column->name}',array( 'wrapperHtmlOptions' => array('class' => 'col-sm-12',),'widgetOptions' => array('data' => array({$valuesfinal}),'htmlOptions' => array(),) ))";
+                return "\$form->dropDownListRow(\$model, '{$column->name}', array({$valuesfinal}))";
             }
             if (strtoupper($column->dbType) == 'DATE') {
-                return "\$form->datePickerGroup(\$model, '{$column->name}', array('prepend' => '<i class=\"icon-calendar\"></i>'))";
+                return "\$form->datepickerRow(\$model, '{$column->name}', array('prepend' => '<i class=\"icon-calendar\"></i>'))";
             } else {
                 if (stripos($column->dbType, 'text') !== false) { // Start of CrudCode::generateActiveField code.
-                    return "\$form->textAreaGroup(\$model,'{$column->name}',array('rows'=>3, 'cols'=>50))";
+                    
+                    return "\$form->textAreaRow(\$model,'{$column->name}',array('rows'=>3, 'cols'=>50))";
                 } else {
                     $passwordI18n = Yii::t('AweCrud.app', 'password');
                     $passwordI18n = (isset($passwordI18n) && $passwordI18n !== '') ? '|' . $passwordI18n : '';
                     $pattern = '/^(password|pass|passwd|passcode' . $passwordI18n . ')$/i';
                     if (preg_match($pattern, $column->name)) {
-                        $inputField = 'passwordFieldGroup';
+                        $inputField = 'passwordFieldRow';
                     } else {
-                        $inputField = 'textFieldGroup';
+                        $inputField = 'textFieldRow';
                     }
 
                     if ($column->type !== 'string' || $column->size === null) {
@@ -230,7 +247,8 @@ class AweCrudCode extends CrudCode {
      * 3: the related active record class name.
      * Or null if no matching relation was found.
      */
-    public function findRelation($modelClass, $column) {
+    public function findRelation($modelClass, $column)
+    {
         if (!$column->isForeignKey) {
             return null;
         }
@@ -254,7 +272,8 @@ class AweCrudCode extends CrudCode {
     /**
      * @return array
      */
-    public function getRelations() {
+    public function getRelations()
+    {
         return CActiveRecord::model($this->modelClass)->relations();
     }
 
@@ -263,14 +282,16 @@ class AweCrudCode extends CrudCode {
      * @param string $column
      * @return string
      */
-    private static function getName($column) {
+    private static function getName($column)
+    {
         return $column->name;
     }
 
-    public static function getIdentificationColumnFromTableSchema($tableSchema) {
+    public static function getIdentificationColumnFromTableSchema($tableSchema)
+    {
         $possibleIdentifiers = array('name', 'title', 'slug');
 
-        $columns_name = array_map(__CLASS__ . '::getName', $tableSchema->columns);
+        $columns_name = array_map(__CLASS__.'::getName', $tableSchema->columns);
         foreach ($possibleIdentifiers as $possibleIdentifier) {
             if (in_array($possibleIdentifier, $columns_name)) {
                 return $possibleIdentifier;
@@ -284,7 +305,11 @@ class AweCrudCode extends CrudCode {
         }
 
         foreach ($tableSchema->columns as $column) {
-            if (!$column->isForeignKey && !$column->isPrimaryKey && $column->type != 'INT' && $column->type != 'INTEGER' && $column->type != 'BOOLEAN'
+            if (!$column->isForeignKey
+                && !$column->isPrimaryKey
+                && $column->type != 'INT'
+                && $column->type != 'INTEGER'
+                && $column->type != 'BOOLEAN'
             ) {
                 return $column->name;
             }
@@ -304,7 +329,8 @@ class AweCrudCode extends CrudCode {
      * @param CDbColumnSchema $column The column.
      * @return string The source code line for the column definition.
      */
-    public function generateGridViewColumn($modelClass, $column) {
+    public function generateGridViewColumn($modelClass, $column)
+    {
         if ($column->isForeignKey) {
             $columnName = $column->name;
             $relations = $this->getRelations();
@@ -314,7 +340,7 @@ class AweCrudCode extends CrudCode {
                 if ($relation[2] == $columnName) {
                     $relatedModel = CActiveRecord::model($relation[1]);
                     $relatedColumnName = $relationName;
-                    /* . '->' . AweCrudCode::getIdentificationColumnFromTableSchema($relatedModel->tableSchema) */
+                    /*. '->' . AweCrudCode::getIdentificationColumnFromTableSchema($relatedModel->tableSchema)*/
                     $relatedModelName = $relation[1];
                 }
             }
@@ -330,16 +356,17 @@ class AweCrudCode extends CrudCode {
                     'value' => 'isset(\$data->{$relatedColumnName}) ? \$data->{$relatedColumnName} : null',
                     'filter' => $filter,
                 )";
-        }
 
+        }
+        
         if (strncmp($column->dbType, 'enum', 4) === 0 && preg_match('/\((.*)\)/', $column->dbType, $matches)) {
 //                die("entra");
             $values = str_replace("''", "\'", $matches[1]); // won't work if there are "\" characters
             $values = explode(",", $values);
 //                $valuesfinal = "'' => ' -- Seleccione -- '";
             $valuesfinal = "";
-            foreach ($values as $value) {
-                $valuesfinal .=$value . "=>" . $value . ",";
+            foreach($values as $value){
+               $valuesfinal .=$value . "=>" . $value .  ",";
             }
             return "array(
                     'name' => '{$column->name}',
@@ -347,29 +374,34 @@ class AweCrudCode extends CrudCode {
                 )";
         }
 
-        /* if ($column->isForeignKey) {// FK.
-          // Find the related model for this column.
-          $relation = $this->findRelation($modelClass, $column);
-          $relationName = $relation[0];
-          $relatedModelClass = $relation[3];
-          return "array(
-          'name' => '{$column->name}',
-          'value' => 'AweHtml::valueEx(\$data->{$relationName})',
-          'filter'=>AweHtml::listDataEx({$relatedModelClass}::model()->findAllAttributes(null, true)),
-          )";
-          } */
+        /*if ($column->isForeignKey) {// FK.
+            // Find the related model for this column.
+            $relation = $this->findRelation($modelClass, $column);
+            $relationName = $relation[0];
+            $relatedModelClass = $relation[3];
+            return "array(
+				'name' => '{$column->name}',
+				'value' => 'AweHtml::valueEx(\$data->{$relationName})',
+				'filter'=>AweHtml::listDataEx({$relatedModelClass}::model()->findAllAttributes(null, true)),
+				)";
+        }*/
 
         // Boolean or bit.
-        if (strtoupper($column->dbType) == 'TINYINT(1)' || strtoupper($column->dbType) == 'BIT' || strtoupper($column->dbType) == 'BOOL' || strtoupper($column->dbType) == 'BOOLEAN'
+        if (strtoupper($column->dbType) == 'TINYINT(1)'
+            || strtoupper($column->dbType) == 'BIT'
+            || strtoupper($column->dbType) == 'BOOL'
+            || strtoupper($column->dbType) == 'BOOLEAN'
         ) {
             return "array(
 					'name' => '{$column->name}',
 					'value' => '(\$data->{$column->name} === 0) ? Yii::t(\\'AweCrud.app\\', \\'No\\') : Yii::t(\\'AweCrud.app\\', \\'Yes\\')',
 					'filter' => array('0' => Yii::t('AweCrud.app', 'No'), '1' => Yii::t('AweCrud.app', 'Yes')),
 					)";
-        } else { // Common column.
+        } else // Common column.
+        {
             return "'{$column->name}'";
         }
+
     }
 
     /**
@@ -379,10 +411,11 @@ class AweCrudCode extends CrudCode {
      * @param string $modelClass
      * @return string
      */
-    public function getNMField($relation, $relatedModelClass, $modelClass) {
+    public function getNMField($relation, $relatedModelClass, $modelClass)
+    {
         $foreign_pk = CActiveRecord::model($relation[1])->getTableSchema()->primaryKey;
         $foreign_identificationColumn = self::getIdentificationColumnFromTableSchema(
-                        CActiveRecord::model($relation[1])->getTableSchema()
+            CActiveRecord::model($relation[1])->getTableSchema()
         );
         $friendlyName = ucfirst($relatedModelClass);
         $str = "<label for=\"$relatedModelClass\"><?php echo Yii::t('app', '$friendlyName'); ?></label>\n";
@@ -392,7 +425,8 @@ array('attributeitem' => '{$foreign_pk}', 'checkAll' => 'Select All')) ?>";
         return $str;
     }
 
-    private function getDetailViewAttribute(CDbColumnSchema $column) {
+    private function getDetailViewAttribute(CDbColumnSchema $column)
+    {
 
         if (in_array(strtolower($column->name), $this->imageFields)) {
             return "array(
@@ -434,6 +468,7 @@ array('attributeitem' => '{$foreign_pk}', 'checkAll' => 'Select All')) ?>";
         return "'{$column->name}'";
     }
 
+
     /**
      * Generates and returns the view source code line
      * to create the appropriate attribute configuration for a CDetailView.
@@ -441,7 +476,8 @@ array('attributeitem' => '{$foreign_pk}', 'checkAll' => 'Select All')) ?>";
      * @param CDbColumnSchema $column The column.
      * @return string The source code line for the attribute.
      */
-    public function generateDetailViewAttribute($modelClass, $column) {
+    public function generateDetailViewAttribute($modelClass, $column)
+    {
         if ($column->isForeignKey) {
             $str = "array(\n";
             $str .= "\t\t\t'name' => '{$column->name}',\n";
@@ -466,7 +502,8 @@ array('attributeitem' => '{$foreign_pk}', 'checkAll' => 'Select All')) ?>";
         return $str;
     }
 
-    public function resolveController($relation) {
+    public function resolveController($relation)
+    {
         $model = new $relation[1];
         $reflection = new ReflectionClass($model);
         $module = preg_match("/\/modules\/([a-zA-Z0-9]+)\//", $reflection->getFileName(), $matches);
