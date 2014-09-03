@@ -18,8 +18,10 @@ return array(
 //        cruge
         'application.modules.cruge.components.*',
         'application.modules.cruge.extensions.crugemailer.*',
+        'application.modules.crm.models.*',
     ),
     'modules' => array(
+        'crm',
         'cruge' => array(
             'tableprefix' => 'cruge_',
             // para que utilice a protected.modules.cruge.models.auth.CrugeAuthDefault.php
@@ -71,15 +73,19 @@ return array(
             'userDescriptionFieldsArray' => array('email'),
             'superuserName' => 'admin',
         ),
-    // uncomment the following to enable the Gii tool
-    /*
-      'gii'=>array(
-      'class'=>'system.gii.GiiModule',
-      'password'=>'Enter Your Password Here',
-      // If removed, Gii defaults to localhost only. Edit carefully to taste.
-      'ipFilters'=>array('127.0.0.1','::1'),
-      ),
-     */
+        // uncomment the following to enable the Gii tool
+        'gii' => array(
+            'class' => 'system.gii.GiiModule',
+            'password' => 'admin',
+            // If removed, Gii defaults to localhost only. Edit carefully to taste.
+            'ipFilters' => array('127.0.0.1', '::1'),
+            'generatorPaths' => array(
+                'application.gii', // a path alias
+                'booster.gii',
+                'application.gii.widget',
+                'ext.AweCrud.generators',
+            ),
+        ),
     ),
     // application components
     'components' => array(
