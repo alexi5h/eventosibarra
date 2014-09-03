@@ -12,11 +12,10 @@
  * @property integer $id
  * @property string $nombre
  * @property string $estado
- * @property integer $sector_detalle_id
+ * @property integer $subsector_id
  *
  * @property Actividad[] $actividads
- * @property Participante[] $participantes
- * @property Subsector $sectorDetalle
+ * @property Subsector $subsector
  */
 abstract class BaseRamaActividad extends AweActiveRecord {
 
@@ -34,20 +33,19 @@ abstract class BaseRamaActividad extends AweActiveRecord {
 
     public function rules() {
         return array(
-            array('nombre, estado, sector_detalle_id', 'required'),
-            array('sector_detalle_id', 'numerical', 'integerOnly'=>true),
+            array('nombre, estado, subsector_id', 'required'),
+            array('subsector_id', 'numerical', 'integerOnly'=>true),
             array('nombre', 'length', 'max'=>45),
             array('estado', 'length', 'max'=>8),
             array('estado', 'in', 'range' => array('ACTIVO','INACTIVO')), // enum,
-            array('id, nombre, estado, sector_detalle_id', 'safe', 'on'=>'search'),
+            array('id, nombre, estado, subsector_id', 'safe', 'on'=>'search'),
         );
     }
 
     public function relations() {
         return array(
             'actividads' => array(self::HAS_MANY, 'Actividad', 'rama_actividad_id'),
-            'participantes' => array(self::HAS_MANY, 'Participante', 'rama_actividad_id'),
-            'sectorDetalle' => array(self::BELONGS_TO, 'Subsector', 'sector_detalle_id'),
+            'subsector' => array(self::BELONGS_TO, 'Subsector', 'subsector_id'),
         );
     }
 
@@ -59,10 +57,9 @@ abstract class BaseRamaActividad extends AweActiveRecord {
                 'id' => Yii::t('app', 'ID'),
                 'nombre' => Yii::t('app', 'Nombre'),
                 'estado' => Yii::t('app', 'Estado'),
-                'sector_detalle_id' => Yii::t('app', 'Sector Detalle'),
+                'subsector_id' => Yii::t('app', 'Subsector'),
                 'actividads' => null,
-                'participantes' => null,
-                'sectorDetalle' => null,
+                'subsector' => null,
         );
     }
 
@@ -72,7 +69,7 @@ abstract class BaseRamaActividad extends AweActiveRecord {
         $criteria->compare('id', $this->id);
         $criteria->compare('nombre', $this->nombre, true);
         $criteria->compare('estado', $this->estado, true);
-        $criteria->compare('sector_detalle_id', $this->sector_detalle_id);
+        $criteria->compare('subsector_id', $this->subsector_id);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

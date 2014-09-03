@@ -13,7 +13,6 @@
  * @property string $nombre
  * @property string $estado
  *
- * @property Participante[] $participantes
  * @property Subsector[] $subsectors
  */
 abstract class BaseSector extends AweActiveRecord {
@@ -42,8 +41,7 @@ abstract class BaseSector extends AweActiveRecord {
 
     public function relations() {
         return array(
-            'participantes' => array(self::HAS_MANY, 'Participante', 'sector_id'),
-            'subsectors' => array(self::HAS_MANY, 'Subsector', 'sector_economico_id'),
+            'subsectors' => array(self::HAS_MANY, 'Subsector', 'sector_id'),
         );
     }
 
@@ -55,7 +53,6 @@ abstract class BaseSector extends AweActiveRecord {
                 'id' => Yii::t('app', 'ID'),
                 'nombre' => Yii::t('app', 'Nombre'),
                 'estado' => Yii::t('app', 'Estado'),
-                'participantes' => null,
                 'subsectors' => null,
         );
     }

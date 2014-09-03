@@ -32,8 +32,8 @@ $this->menu = array(
                     'filter' => array('ACTIVO'=>'ACTIVO','INACTIVO'=>'INACTIVO',),
                 ),
                         array(
-                    'name' => 'sector_detalle_id',
-                    'value' => 'isset($data->sectorDetalle) ? $data->sectorDetalle : null',
+                    'name' => 'subsector_id',
+                    'value' => 'isset($data->subsector) ? $data->subsector : null',
                     'filter' => CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()),
                 ),
                     array(

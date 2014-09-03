@@ -24,7 +24,7 @@
 
             <?php
             echo $form->select2Group(
-                    $model, 'sector_economico_id', array(
+                    $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
                     'class' => 'col-sm-12',
                 ),

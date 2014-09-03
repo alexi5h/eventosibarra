@@ -15,7 +15,6 @@
  * @property integer $rama_actividad_id
  *
  * @property RamaActividad $ramaActividad
- * @property Participante[] $participantes
  */
 abstract class BaseActividad extends AweActiveRecord {
 
@@ -45,7 +44,6 @@ abstract class BaseActividad extends AweActiveRecord {
     public function relations() {
         return array(
             'ramaActividad' => array(self::BELONGS_TO, 'RamaActividad', 'rama_actividad_id'),
-            'participantes' => array(self::HAS_MANY, 'Participante', 'actividad_id'),
         );
     }
 
@@ -59,7 +57,6 @@ abstract class BaseActividad extends AweActiveRecord {
                 'estado' => Yii::t('app', 'Estado'),
                 'rama_actividad_id' => Yii::t('app', 'Rama Actividad'),
                 'ramaActividad' => null,
-                'participantes' => null,
         );
     }
 
