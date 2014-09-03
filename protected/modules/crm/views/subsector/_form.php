@@ -21,6 +21,9 @@
             <?php echo $form->textFieldGroup($model, 'nombre', array('maxlength' => 45)) ?>
 
             <?php // echo $form->dropDownListGroup($model, 'estado', array('wrapperHtmlOptions' => array('class' => 'col-sm-12',), 'widgetOptions' => array('data' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',), 'htmlOptions' => array(),))) ?>
+            <?php
+            $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
+            ?>
 
             <?php
             echo $form->select2Group(
@@ -29,7 +32,7 @@
                     'class' => 'col-sm-12',
                 ),
                 'widgetOptions' => array(
-                    'data' => CHtml::listData(Sector::model()->findAll(), 'id', Sector::representingColumn()),
+                    'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')

@@ -24,10 +24,16 @@ Util::tsRegisterAssetJs('_form.js');
             <?php echo $form->textFieldGroup($model, 'nombre', array('maxlength' => 45)) ?>
             <?php
             if ($model->isNewRecord) {
-                $data_sector = CHtml::listData(Sector::model()->findAll(), 'id', Sector::representingColumn());
+                $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
                 $data_subsector = null;
-            }else{
-                
+            } else {
+                $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
+                $data_subsector = CHtml::listData(Subsector::model()->activos()->findAll(array(
+                                    "condition" => "sector_id =:sector_id",
+                                    "order" => "nombre",
+                                    "params" => array(':sector_id' => $model->subsector->sector->id,)
+                                )), 'id', Subsector::representingColumn());
+                $model->sector_id = $model->subsector->sector->id;
             }
             ?>
             <?php
