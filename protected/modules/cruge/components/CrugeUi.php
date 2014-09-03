@@ -528,11 +528,10 @@ class CrugeUi extends CComponent
         $label = ucwords($label);
         
         Yii::app()->getController()->widget(
-            'bootstrap.widgets.TbButton'
+            'booster.widgets.TbButton'
             ,
             array(
                 'buttonType' => $_type,
-                'type' => 'success',
                 'htmlOptions' => array('class'=>'btn'),
                 'icon' => $_icon,
                 'label' => $label,

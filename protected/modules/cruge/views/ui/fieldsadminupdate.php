@@ -126,7 +126,6 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
             <div class="form-actions-float">
             <?php $this->widget('booster.widgets.TbButton', array(
                 'buttonType' => 'submit',
-                'type' => 'success',
                 'icon'=>'ok',
                 'label' => CrugeTranslator::t(($model->isNewRecord ? "Crear Campo" : "Actualizar Campo")),
             )); ?>

@@ -25,7 +25,6 @@
             <div class="form-actions-float">
             <?php $this->widget('booster.widgets.TbButton', array(
                 'buttonType' => 'submit',
-                'type' => 'danger',
                 'icon'=>'ok',
                 'label' => CrugeTranslator::t("Eliminar"),
             )); ?>
