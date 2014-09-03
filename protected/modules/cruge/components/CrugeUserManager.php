@@ -875,7 +875,7 @@ class CrugeUserManager
             }
             // le envia un email con su clave generada automaticamente
 			if($bool_send_email == true)
-            	Yii::app()->crugemailer->sendPasswordTo($user, $password);
+            	//Yii::app()->crugemailer->sendPasswordTo($user, $password);
             return $user;
         } else {
             // un error de validacion. emitido por alguna regla de
