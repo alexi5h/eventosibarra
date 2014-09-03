@@ -5783,7 +5783,7 @@ button.close {
   }
 }*/
 /*# sourceMappingURL=bootstrap.css.map */
-@import url("//fonts.googleapis.com/css?family=Ubuntu");
+/*@import url("//fonts.googleapis.com/css?family=Ubuntu");*/
 /*!
  * bootswatch v3.2.0
  * Homepage: http://bootswatch.com
@@ -5793,7 +5793,7 @@ button.close {
 */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
+  font-family: 'Glyphicons Halflings';
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -6045,7 +6045,7 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/HelveticaNeue.ttf.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
