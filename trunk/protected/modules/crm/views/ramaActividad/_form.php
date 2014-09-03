@@ -26,13 +26,15 @@ Util::tsRegisterAssetJs('_form.js');
             if ($model->isNewRecord) {
                 $data_sector = CHtml::listData(Sector::model()->findAll(), 'id', Sector::representingColumn());
                 $data_subsector = null;
+            }else{
+                
             }
             ?>
             <?php
             echo $form->select2Group(
                     $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12 fix',
+                    'class' => 'col-sm-12',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
