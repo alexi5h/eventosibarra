@@ -4,7 +4,7 @@ Util::tsRegisterAssetJs('_form.js');
 /** @var Actividad $model */
 /** @var AweActiveForm $form */
 ?>
-<div class="col-lg-8 col-lg-offset-2">
+<div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><?php echo Yii::t('AweCrud.app', $model->isNewRecord ? 'Create' : 'Update') . ' ' . Actividad::label(1); ?></h3>

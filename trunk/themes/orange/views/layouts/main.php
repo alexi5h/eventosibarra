@@ -9,7 +9,7 @@
         <meta charset="utf-8" />
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <!-- CSS FILES -->
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
 
         <script>
             var baseUrl = "<?php print Yii::app()->baseUrl . '/'; ?>";
@@ -21,65 +21,122 @@
 
     <!-- BEGIN BODY -->
     <body >
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="<?php echo Yii::app()->homeUrl ?>" class="navbar-brand">
-                        Bootswatch
-                    </a>
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse" id="navbar-main">
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><?php echo Yii::app()->user->name ? Yii::app()->user->name : "Guest" ?><span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="download">
-                                <?php if (!Yii::app()->user->isGuest): ?>
-                                    <li><?php echo CHtml::link('<i class="icon-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
-                                    <?php if (Yii::app()->user->checkAccess('admin')): ?>
-                                        <li><?php echo CHtml::link('<i class="icon-cog"></i>&nbsp;&nbsp;Administración', Yii::app()->user->ui->userManagementAdminUrl) ?></li>
-                                    <?php endif; ?>
-                                    <li><?php echo CHtml::link('<i class="icon-key"></i>&nbsp;&nbsp;Cerrar Sesión', Yii::app()->user->ui->logoutUrl) ?></a></li>
-                                <?php else: ?>
-                                    <li><?php echo CHtml::link('<i class="icon-key"></i>&nbsp;&nbsp;Iniciar Sesión', Yii::app()->user->ui->loginUrl) ?></a></li>
-                                <?php endif; ?>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-
         <div class="container">
-            <div class="row-fluid">
-                <div id="maiMessages" class="flash-messages">
-                    <?php
-                    $messages = Yii::app()->user->getFlashes();
-                    if ($messages) {
-                        foreach ($messages as $key => $message) {
-                            echo '<div class="alert alert-' . $key . '">'
-                            . '<button data-dismiss="alert" class="close" type="button">×</button>'
-                            . $message . "</div>\n";
-                        }
-                    }
-                    ?>
+            <div class="row">
+                <div class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="<?php echo Yii::app()->homeUrl ?>" class="navbar-brand">
+                                Bootswatch
+                            </a>
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse" id="navbar-main">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><?php echo Yii::app()->user->name ? Yii::app()->user->name : "Guest" ?><span class="caret"></span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="download">
+                                        <?php if (!Yii::app()->user->isGuest): ?>
+                                            <li><?php echo CHtml::link('<i class="icon-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
+                                            <?php if (Yii::app()->user->checkAccess('admin')): ?>
+                                                <li><?php echo CHtml::link('<i class="icon-cog"></i>&nbsp;&nbsp;Administración', Yii::app()->user->ui->userManagementAdminUrl) ?></li>
+                                            <?php endif; ?>
+                                            <li><?php echo CHtml::link('<i class="icon-key"></i>&nbsp;&nbsp;Cerrar Sesión', Yii::app()->user->ui->logoutUrl) ?></a></li>
+                                        <?php else: ?>
+                                            <li><?php echo CHtml::link('<i class="icon-key"></i>&nbsp;&nbsp;Iniciar Sesión', Yii::app()->user->ui->loginUrl) ?></a></li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row-fluid">
-                <?php echo $content; ?>
+            <br/>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="maiMessages" class="flash-messages">
+                        <?php
+                        $messages = Yii::app()->user->getFlashes();
+                        if ($messages) {
+                            foreach ($messages as $key => $message) {
+                                echo '<div class="alert alert-' . $key . '">'
+                                . '<button data-dismiss="alert" class="close" type="button">×</button>'
+                                . $message . "</div>\n";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="well">
+                        <div>
+                            <ul class="nav">
+                                <li>
+                                    <label label-default="" class="tree-toggle nav-header">Bootstrap</label>
+                                    <ul class="nav tree">
+                                        <li><a href="#">JavaScript</a>
+                                        </li>
+                                        <li><a href="#">CSS</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <label label-default="" class="tree-toggle nav-header">Buttons</label>
+                                    <ul class="nav tree">
+                                        <li><a href="#">Colors</a>
+                                        </li>
+                                        <li><a href="#">Sizes</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <label label-default="" class="tree-toggle nav-header">Responsive</label>
+                                    <ul class="nav tree">
+                                        <li><a href="#">Overview</a>
+                                        </li>
+                                        <li><a href="#">CSS</a>
+                                        </li>
+                                        <li>
+                                            <label label-default="" class="tree-toggle nav-header">Media Queries</label>
+                                            <ul class="nav tree">
+                                                <li><a href="#">Text</a>
+                                                </li>
+                                                <li><a href="#">Images</a>
+                                                </li>
+                                                <li>
+                                                    <label label-default="" class="tree-toggle nav-header">Mobile</label>
+                                                    <ul class="nav tree">
+                                                        <li><a href="#">iPhone</a>
+                                                        </li>
+                                                        <li><a href="#">Samsung</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <?php echo $content; ?>
+                </div>
+            </div>
         </div>
-
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
     </body>
     <!-- END BODY -->
 </html>

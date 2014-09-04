@@ -4,7 +4,7 @@
 /** @var AweActiveForm $form */
 Util::tsRegisterAssetJs('_form.js');
 ?>
-<div class="col-lg-8 col-lg-offset-2">
+<div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><?php echo Yii::t('AweCrud.app', $model->isNewRecord ? 'Create' : 'Update') . ' ' . Participante::label(1); ?></h3>
@@ -62,7 +62,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-6',
+                    'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
@@ -78,7 +78,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'subsector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-6',
+                    'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_subsector ? array(null => ' -- Seleccione -- ') + $data_subsector : array(null => ' -- Ninguno -- '),
@@ -94,7 +94,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'rama_actividad_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-6',
+                    'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_rama_actividad ? array(null => ' -- Seleccione -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
@@ -110,7 +110,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'actividad_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-6',
+                    'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_actividad ? array(null => ' -- Seleccione -- ') + $data_actividad : array(null => ' -- Ninguno -- '),

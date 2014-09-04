@@ -3,7 +3,7 @@
 /** @var Subsector $model */
 /** @var AweActiveForm $form */
 ?>
-<div class="col-lg-6 col-lg-offset-3">
+<div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><?php echo Yii::t('AweCrud.app', $model->isNewRecord ? 'Create' : 'Update') . ' ' . Subsector::label(1); ?></h3>
@@ -29,7 +29,7 @@
             echo $form->select2Group(
                     $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-6',
+                    'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
