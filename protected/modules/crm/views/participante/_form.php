@@ -23,7 +23,7 @@ Util::tsRegisterAssetJs('_form.js');
 
             <?php echo $form->textFieldGroup($model, 'apellidos', array('maxlength' => 128)) ?>
 
-            <?php echo $form->dropDownListGroup($model, 'tipo', array('wrapperHtmlOptions' => array('class' => 'col-sm-12',), 'widgetOptions' => array('data' => array('N' => 'N', 'E' => 'E', 'CIA' => 'CIA', 'COO' => 'COO', 'ASO' => 'ASO',), 'htmlOptions' => array(),))) ?>
+            <?php echo $form->dropDownListGroup($model, 'tipo', array('wrapperHtmlOptions' => array('class' => 'col-sm-6',), 'widgetOptions' => array('data' => array('N' => 'N', 'E' => 'E', 'CIA' => 'CIA', 'COO' => 'COO', 'ASO' => 'ASO',), 'htmlOptions' => array(),))) ?>
 
             <?php echo $form->textFieldGroup($model, 'telefono', array('maxlength' => 45)) ?>
 
@@ -62,7 +62,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12',
+                    'class' => 'col-sm-6',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
@@ -78,7 +78,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'subsector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12',
+                    'class' => 'col-sm-6',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_subsector ? array(null => ' -- Seleccione -- ') + $data_subsector : array(null => ' -- Ninguno -- '),
@@ -94,7 +94,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'rama_actividad_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12',
+                    'class' => 'col-sm-6',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_rama_actividad ? array(null => ' -- Seleccione -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
@@ -110,7 +110,7 @@ Util::tsRegisterAssetJs('_form.js');
             echo $form->select2Group(
                     $model, 'actividad_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12',
+                    'class' => 'col-sm-6',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_actividad ? array(null => ' -- Seleccione -- ') + $data_actividad : array(null => ' -- Ninguno -- '),
