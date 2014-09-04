@@ -12,7 +12,7 @@ function AjaxListaSubsectores(lista, lista_actualizar)
         $("#" + lista_actualizar).html(data);
         $('#s2id_' + lista_actualizar + ' a span').html($("#" + lista_actualizar + " option[id='p']").html());
         $('span.select2-arrow').html('<b role="presentation"></b>');
-
+        $("option[id='p']").val(null);
     });
 }
 function AjaxCargarListas(url, data, callBack)
