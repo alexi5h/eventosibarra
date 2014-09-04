@@ -4,7 +4,7 @@ Util::tsRegisterAssetJs('_form.js');
 /** @var Actividad $model */
 /** @var AweActiveForm $form */
 ?>
-<div class="col-lg-6">
+<div class="col-lg-6 col-lg-offset-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><?php echo Yii::t('AweCrud.app', $model->isNewRecord ? 'Create' : 'Update') . ' ' . Actividad::label(1); ?></h3>
@@ -16,7 +16,7 @@ Util::tsRegisterAssetJs('_form.js');
                 'type' => 'horizontal',
                 'id' => 'actividad-form',
                 'enableAjaxValidation' => true,
-                'clientOptions' => array('validateOnSubmit' => false, 'validateOnChange' => true,),
+                'clientOptions' => array('validateOnSubmit' => true, 'validateOnChange' => false,),
                 'enableClientValidation' => false,
             ));
             ?>
