@@ -21,7 +21,7 @@
 
     <!-- BEGIN BODY -->
     <body >
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
@@ -59,8 +59,6 @@
                 </div>
             </div>
             <br/>
-            <br/>
-            <br/>
             <div class="row">
                 <div class="col-md-12">
                     <div id="maiMessages" class="flash-messages">
@@ -78,36 +76,53 @@
                 </div>
             </div>
             <div class="row">
-                <?php if ($this->admin) : ?>
-                    <div class="col-md-3">
-                        <div class="well">
-                            <div>
-                                <ul class="nav">
-                                    <li>    
-                                        <label label-default="" class="tree-toggle nav-header"><a href="<?php echo Yii::app()->homeUrl ?>"> Regresar a la App</a></label>
-                                    </li>
-                                    <li>
-                                        <label label-default="" class="tree-toggle nav-header">Cat&aacute;logo</label>
-                                        <ul class="nav tree">
-                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/sector/admin'?>">Sector</a>
-                                            </li>
-                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/subsector/admin'?>">Subsector</a>
-                                            </li>
-                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/ramaActividad/admin'?>">Rama Actividad</a>
-                                            </li>
-                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/actividad/admin'?>">Actividad</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+
+                <div class="row">
+                    <div class="col-sm-3 col-md-3">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a   href="<?php echo Yii::app()->user->ui->userManagementAdminUrl ?>"><span class="glyphicon glyphicon-wrench">
+                                            </span>Administración</a>
+                                    </h4>
+                                </div>
                             </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-tasks">
+                                            </span>Cat&aacute;logo</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><span class="glyphicon glyphicon-usd"></span><a href="<?php print Yii::app()->baseUrl . '/crm/sector'; ?>">Sectores Econ&oacute;micos</a></li>
+
+                                        <li class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span><a href="<?php print Yii::app()->baseUrl . '/crm/subsector'; ?>">Subsectores</a></li>
+
+                                        <li class="list-group-item"> <span class="glyphicon glyphicon-briefcase"></span><a href="<?php print Yii::app()->baseUrl . '/crm/ramaActividad'; ?>">Rama de actividades</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>  <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a   href="<?php print Yii::app()->baseUrl . '/crm/participante'; ?>"><span class="glyphicon glyphicon-user">
+                                            </span>Participantes</a>
+                                    </h4>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                <?php endif; ?>
-                <div class=" <?php echo $this->admin ? "col-md-9 " : "col-md-10 col-lg-offset-1" ?>  ">
-                    <?php echo $content; ?>
+                    <div class="col-sm-9 col-md-9">
+                        <?php echo $content; ?>
+
+                    </div>
                 </div>
             </div>
+
         </div>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
     </body>
