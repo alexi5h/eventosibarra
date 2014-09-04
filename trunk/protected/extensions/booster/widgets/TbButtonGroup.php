@@ -30,7 +30,7 @@ class TbButtonGroup extends CWidget {
 	 * @var string the button callback type.
 	 * @see BootButton::buttonType
 	 */
-	public $buttonType = TbButton::BUTTON_BUTTON;
+	public $buttonType = TbButton::BUTTON_LINK;
 
 	/**
 	 * @var string the button type.

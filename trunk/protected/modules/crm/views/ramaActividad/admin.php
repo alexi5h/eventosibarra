@@ -10,16 +10,10 @@ $this->menu = array(
 <div id="flashMsg"  class="flash-messages">
 
 </div> 
-<div class="widget blue">
-    <div class="widget-title">
-        <h4> <i class="icon-fire-extinguisher"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo RamaActividad::label(2) ?> </h4>
-        <span class="tools">
-            <a href="javascript:;" class="icon-chevron-down"></a>
-            <!--a href="javascript:;" class="icon-remove"></a-->
-        </span>
-    </div>
-    <div class="widget-body">
-
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading"> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo RamaActividad::label(2) ?> </div>
+    <div class="panel-body">
         <?php
         $this->widget('booster.widgets.TbGridView', array(
             'id' => 'rama-actividad-grid',
@@ -37,7 +31,9 @@ $this->menu = array(
                     'filter' => CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()),
                 ),
                 array(
-                    'class' => 'CButtonColumn',
+                                        'htmlOptions' => array('nowrap' => 'nowrap'),
+
+                    'class' => 'booster.widgets.TbButtonColumn',
                     'template' => '{update} {delete}',
                     'afterDelete' => 'function(link,success,data){ 
                     if(success) {
