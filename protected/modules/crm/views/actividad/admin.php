@@ -2,7 +2,7 @@
 /** @var ActividadController $this */
 /** @var Actividad $model */
 $this->menu = array(
-    array('label' => Yii::t('AweCrud.app', 'Create'), 'icon' => 'plus', 'url' => array('create'), 
+    array('label' => Yii::t('AweCrud.app', 'Create'), 'icon' => 'plus', 'url' => array('create'),
     //'visible' => (Util::checkAccess(array('action_incidenciaPrioridad_create')))
     ),
 );
@@ -10,34 +10,30 @@ $this->menu = array(
 <div id="flashMsg"  class="flash-messages">
 
 </div> 
-<div class="widget blue">
-    <div class="widget-title">
-        <h4> <i class="icon-fire-extinguisher"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Actividad::label(2) ?> </h4>
-        <span class="tools">
-            <a href="javascript:;" class="icon-chevron-down"></a>
-            <!--a href="javascript:;" class="icon-remove"></a-->
-        </span>
-    </div>
-    <div class="widget-body">
-
-            <?php 
-        $this->widget('booster.widgets.TbGridView',array(
-        'id' => 'actividad-grid',
-        'type' => 'striped bordered hover advance',
-        'dataProvider' => $model->search(),
-        'columns' => array(
-                    'nombre',
-                        array(
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading"> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Actividad::label(2) ?></div>
+    <div class="panel-body">
+        <?php
+        $this->widget('booster.widgets.TbGridView', array(
+            'id' => 'actividad-grid',
+            'type' => 'striped bordered hover advance',
+            'dataProvider' => $model->search(),
+            'columns' => array(
+                'nombre',
+                array(
                     'name' => 'estado',
-                    'filter' => array('ACTIVO'=>'ACTIVO','INACTIVO'=>'INACTIVO',),
+                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
                 ),
-                        array(
+                array(
                     'name' => 'rama_actividad_id',
                     'value' => 'isset($data->ramaActividad) ? $data->ramaActividad : null',
                     'filter' => CHtml::listData(RamaActividad::model()->findAll(), 'id', RamaActividad::representingColumn()),
                 ),
-                    array(
-                    'class' => 'CButtonColumn',
+                array(
+                    'htmlOptions' => array('nowrap' => 'nowrap'),
+//                    'class' => 'CButtonColumn',
+                    'class' => 'booster.widgets.TbButtonColumn',
                     'template' => '{update} {delete}',
                     'afterDelete' => 'function(link,success,data){ 
                     if(success) {
@@ -51,20 +47,21 @@ $this->menu = array(
                             'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
                             'options' => array('title' => 'Actualizar'),
                             'imageUrl' => false,
-                             //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
+                        //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
                         ),
                         'delete' => array(
                             'label' => '<button class="btn btn-danger"><i class="icon-trash"></i></button>',
                             'options' => array('title' => 'Eliminar'),
                             'imageUrl' => false,
-                            //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_delete"))'
+                        //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_delete"))'
                         ),
                     ),
                     'htmlOptions' => array(
                         'width' => '80px'
                     )
                 ),
-        ),
-        )); ?>
+            ),
+        ));
+        ?>
     </div>
 </div>

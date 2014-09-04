@@ -1,21 +1,22 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 
-<?php if($this->menu): ?>
-<div class="top-controlls">
-    <?php foreach($this->menu as $menu) :?>
-    <?php $this->widget(
-        'ext.booster.widgets.TbButtonGroup',
-        array(
-            'buttons' => array($menu),
-        )
-    ); ?>
+<?php if ($this->menu): ?>
+    <div class="top-controlls">
+        <?php foreach ($this->menu as $menu) : ?>
+            <?php
+            $this->widget(
+                    'ext.booster.widgets.TbButtonGroup', array(
+                'buttons' => array($menu),
+                    )
+            );
+            ?>
     <?php endforeach; ?>
-</div>
+    </div>
 <?php endif; ?>
 
 <div>
-    <?php echo $content; ?>
+<?php echo $content; ?>
 </div>
 
 <?php $this->endContent(); ?>

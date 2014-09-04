@@ -10,17 +10,11 @@ $this->menu = array(
 <div id="flashMsg"  class="flash-messages">
 
 </div> 
-<div class="widget blue">
-    <div class="widget-title">
-        <h4> <i class="icon-fire-extinguisher"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Sector::label(2) ?> </h4>
-        <span class="tools">
-            <a href="javascript:;" class="icon-chevron-down"></a>
-            <!--a href="javascript:;" class="icon-remove"></a-->
-        </span>
-    </div>
-    <div class="widget-body">
-
-            <?php 
+<br/>
+<div class="panel panel-default">
+  <div class="panel-heading"> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Sector::label(2) ?></div>
+  <div class="panel-body">
+        <?php 
         $this->widget('booster.widgets.TbGridView',array(
         'id' => 'sector-grid',
         'type' => 'striped bordered hover advance',
@@ -32,7 +26,9 @@ $this->menu = array(
                     'filter' => array('ACTIVO'=>'ACTIVO','INACTIVO'=>'INACTIVO',),
                 ),
                     array(
-                    'class' => 'CButtonColumn',
+                                            'htmlOptions' => array('nowrap' => 'nowrap'),
+
+                    'class' => 'booster.widgets.TbButtonColumn',
                     'template' => '{update} {delete}',
                     'afterDelete' => 'function(link,success,data){ 
                     if(success) {
@@ -61,5 +57,5 @@ $this->menu = array(
                 ),
         ),
         )); ?>
-    </div>
+  </div>
 </div>
