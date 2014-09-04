@@ -23,7 +23,8 @@ Util::tsRegisterAssetJs('_form.js');
 
             <?php echo $form->textFieldGroup($model, 'apellidos', array('maxlength' => 128)) ?>
 
-            <?php echo $form->dropDownListGroup($model, 'tipo', array('wrapperHtmlOptions' => array('class' => 'col-sm-6',), 'widgetOptions' => array('data' => array('N' => 'N', 'E' => 'E', 'CIA' => 'CIA', 'COO' => 'COO', 'ASO' => 'ASO',), 'htmlOptions' => array(),))) ?>
+            <?php echo $form->dropDownListGroup($model, 'tipo', array('wrapperHtmlOptions' => array('class' => 'col-sm-6',), 'widgetOptions' => array(
+                'data' => array('N' => 'Natural', 'E' => 'Empresa', 'CIA' => 'Compañía Limitada', 'COO' => 'Cooperativa', 'ASO' => 'Asociación',), 'htmlOptions' => array(),))) ?>
 
             <?php echo $form->textFieldGroup($model, 'telefono', array('maxlength' => 45)) ?>
 
