@@ -4,9 +4,26 @@ Yii::import('application.modules.crm.models._base.BaseActividad');
 
 class Actividad extends BaseActividad {
 
+    public $sector_id;
+    public $subsector_id;
+    
     const ESTADO_ACTIVO = 'ACTIVO';
     const ESTADO_INACTIVO = 'INACTIVO';
 
+    public function rules() {
+        return array_merge(parent::rules(), array(
+            array('sector_id', 'required'),
+            array('subsector_id', 'required')
+        ));
+    }
+    
+    public function attributeLabels() {
+        return array_merge(parent::attributeLabels(), array(
+            'sector_id' => Yii::t('app', 'Sector'),
+            'subsector_id' => Yii::t('app', 'Subsector'),
+        ));
+    }
+    
     public function scopes() {
         return array(
             'activos' => array(
