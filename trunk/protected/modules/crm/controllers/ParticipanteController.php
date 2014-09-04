@@ -33,9 +33,11 @@ class ParticipanteController extends AweController {
     public function actionCreate() {
         $this->admin = false;
         $model = new Participante;
+        $model->estado = Participante::ESTADO_ACTIVO;
         $this->performAjaxValidation($model, 'participante-form');
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];
+
             if ($model->save()) {
                 $this->redirect(array('admin'));
             }
@@ -75,8 +77,9 @@ class ParticipanteController extends AweController {
     public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
-
+            $participante = $this->loadModel($id);
+            Participante::model()->updateByPk($id, array('estado' => Participante::ESTADO_INACTIVO));
+            echo '<div class = "alert alert-success"><button data-dismiss = "alert" class = "close" type = "button">×</button>Borrado Exitosamente.</div>';
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

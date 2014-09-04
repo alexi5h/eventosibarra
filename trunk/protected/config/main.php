@@ -11,6 +11,7 @@ return array(
     'theme' => 'orange',
     // preloading 'log' component
     'preload' => array('log', 'bootstrap'),
+    'defaultController' => 'crm/participante/admin',
     // autoloading model and component classes
     'import' => array(
         'application.models.*',

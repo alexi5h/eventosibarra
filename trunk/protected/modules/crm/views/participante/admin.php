@@ -24,7 +24,7 @@ $this->menu = array(
                 'apellidos',
                 array(
                     'name' => 'tipo',
-                    'filter' => array('N' => 'N', 'E' => 'E', 'CIA' => 'CIA', 'COO' => 'COO', 'ASO' => 'ASO',),
+                    'filter' => array('N' => 'Natural', 'E' => 'Empresa', 'CIA' => 'Compañía Limitada', 'COO' => 'Cooperativa', 'ASO' => 'Asociación',),
                 ),
                 'telefono',
                 'email',
