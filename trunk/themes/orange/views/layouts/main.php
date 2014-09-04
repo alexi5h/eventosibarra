@@ -78,60 +78,33 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="well">
-                        <div>
-                            <ul class="nav">
-                                <li>
-                                    <label label-default="" class="tree-toggle nav-header">Bootstrap</label>
-                                    <ul class="nav tree">
-                                        <li><a href="#">JavaScript</a>
-                                        </li>
-                                        <li><a href="#">CSS</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <label label-default="" class="tree-toggle nav-header">Buttons</label>
-                                    <ul class="nav tree">
-                                        <li><a href="#">Colors</a>
-                                        </li>
-                                        <li><a href="#">Sizes</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <label label-default="" class="tree-toggle nav-header">Responsive</label>
-                                    <ul class="nav tree">
-                                        <li><a href="#">Overview</a>
-                                        </li>
-                                        <li><a href="#">CSS</a>
-                                        </li>
-                                        <li>
-                                            <label label-default="" class="tree-toggle nav-header">Media Queries</label>
-                                            <ul class="nav tree">
-                                                <li><a href="#">Text</a>
-                                                </li>
-                                                <li><a href="#">Images</a>
-                                                </li>
-                                                <li>
-                                                    <label label-default="" class="tree-toggle nav-header">Mobile</label>
-                                                    <ul class="nav tree">
-                                                        <li><a href="#">iPhone</a>
-                                                        </li>
-                                                        <li><a href="#">Samsung</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                <?php if ($this->admin) : ?>
+                    <div class="col-md-3">
+                        <div class="well">
+                            <div>
+                                <ul class="nav">
+                                    <li>    
+                                        <label label-default="" class="tree-toggle nav-header"><a href="<?php echo Yii::app()->homeUrl ?>"> Regresar a la App</a></label>
+                                    </li>
+                                    <li>
+                                        <label label-default="" class="tree-toggle nav-header">Cat&aacute;logo</label>
+                                        <ul class="nav tree">
+                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/sector/admin'?>">Sector</a>
+                                            </li>
+                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/subsector/admin'?>">Subsector</a>
+                                            </li>
+                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/ramaActividad/admin'?>">Rama Actividad</a>
+                                            </li>
+                                            <li><a href="<?php print Yii::app()->baseUrl . '/crm/actividad/admin'?>">Actividad</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-9">
+                <?php endif; ?>
+                <div class=" <?php echo $this->admin ? "col-md-9 " : "col-md-10 col-lg-offset-1" ?>  ">
                     <?php echo $content; ?>
                 </div>
             </div>

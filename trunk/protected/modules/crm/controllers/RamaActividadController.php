@@ -7,7 +7,7 @@ class RamaActividadController extends AweController {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-    public $admin = false;
+    public $admin = true;
     public $defaultAction = 'admin';
 
     public function filters() {
