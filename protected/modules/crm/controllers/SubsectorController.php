@@ -7,7 +7,7 @@ class SubsectorController extends AweController {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-    public $admin = false;
+    public $admin = true;
     public $defaultAction = 'admin';
 
     public function filters() {
@@ -102,7 +102,7 @@ class SubsectorController extends AweController {
 
     public function actionAjaxGetSubsectorBySector() {
         if (Yii::app()->request->isAjaxRequest) {
-            if (isset($_POST['sector_id']) && $_POST['sector_id'] !='') {
+            if (isset($_POST['sector_id']) && $_POST['sector_id'] != '') {
                 $data = Subsector::model()->activos()->findAll(array(
                     "condition" => "sector_id =:sector_id",
                     "order" => "nombre",
