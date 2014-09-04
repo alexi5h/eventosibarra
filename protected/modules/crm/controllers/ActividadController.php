@@ -101,6 +101,29 @@ class ActividadController extends AweController {
         ));
     }
 
+    public function actionAjaxGetActividadByRama() {
+        if (Yii::app()->request->isAjaxRequest) {
+            if (isset($_POST['rama_actividad_id']) && $_POST['rama_actividad_id'] != '') {
+                $data = Actividad::model()->activos()->findAll(array(
+                    "condition" => "rama_actividad_id =:rama_actividad_id",
+                    "order" => "nombre",
+                    "params" => array(':rama_actividad_id' => $_POST['rama_actividad_id'],)
+                ));
+                if ($data) {
+                    $data = CHtml::listData($data, 'id', 'nombre');
+                    echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- Actividades -', true);
+                    foreach ($data as $value => $name) {
+                        echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
+                    }
+                } else {
+                    echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- No existen opciones -', true);
+                }
+            } else {
+                echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- Seleccione una rama de actividad -', true);
+            }
+        }
+    }
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
