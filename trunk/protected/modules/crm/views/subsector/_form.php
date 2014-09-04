@@ -29,7 +29,7 @@
             echo $form->select2Group(
                     $model, 'sector_id', array(
                 'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-12',
+                    'class' => 'col-sm-6',
                 ),
                 'widgetOptions' => array(
                     'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
@@ -45,15 +45,20 @@
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <?php
-                    $this->widget('booster.widgets.TbButton', array(
+                    $this->widget('ext.booster.widgets.TbButton', array(
                         'buttonType' => 'submit',
                         'label' => $model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Save'),
+                        'htmlOptions' => array(
+                            'class' => 'btn-default',
+                            )
                     ));
                     ?>
                     <?php
                     $this->widget('booster.widgets.TbButton', array(
                         'label' => Yii::t('AweCrud.app', 'Cancel'),
-                        'htmlOptions' => array('onclick' => 'javascript:history.go(-1)')
+                        'htmlOptions' => array(
+                            'class' => 'btn-danger',
+                            'onclick' => 'javascript:history.go(-1)')
                     ));
                     ?>
                     <?php $this->endWidget(); ?>
