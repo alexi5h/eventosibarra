@@ -8,6 +8,12 @@ class Sector extends BaseSector {
     const ESTADO_ACTIVO = 'ACTIVO';
     const ESTADO_INACTIVO = 'INACTIVO';
 
+    public function relations() {
+        return array_merge(parent::relations(), array(
+            'participantes' => array(self::HAS_MANY, 'Participante', 'sector_id'),
+        ));
+    }
+
     public function scopes() {
         return array(
             'activos' => array(

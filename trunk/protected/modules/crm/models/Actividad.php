@@ -17,6 +17,12 @@ class Actividad extends BaseActividad {
         ));
     }
     
+    public function relations() {
+        return array_merge(parent::relations(), array(
+            'participantes' => array(self::HAS_MANY, 'Participante', 'actividad_id'),
+        ));
+    }
+    
     public function attributeLabels() {
         return array_merge(parent::attributeLabels(), array(
             'sector_id' => Yii::t('app', 'Sector'),
