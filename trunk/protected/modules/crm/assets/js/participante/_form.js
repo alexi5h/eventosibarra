@@ -3,8 +3,7 @@ $(function() {
         AjaxListaSubsectores("Participante_sector_id", "Participante_subsector_id");
     });
     $("#Participante_subsector_id").change(function() {
-        AjaxListaRamaActividades("Participante_sector_id", "Participante_rama_actividad_id");
-
+        AjaxListaRamaActividades("Participante_subsector_id", "Participante_rama_actividad_id");
     });
     $("#Participante_rama_actividad_id").change(function() {
         AjaxListaActividades("Participante_rama_actividad_id", "Participante_actividad_id");

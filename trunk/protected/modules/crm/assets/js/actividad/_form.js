@@ -24,7 +24,7 @@ function AjaxListaSubsectores(lista, lista_actualizar)
 function AjaxListaRamaActividades(lista, lista_actualizar)
 {
     $('#s2id_' + lista_actualizar + ' a span').html('');
-    AjaxCargarListas(baseUrl + "crm/ramaActividad/ajaxGetRamaActividadBySubsector",
+    AjaxCargarListas(baseUrl + "crm/ramaActividad/ajaxGetRamaActiBySubsector",
             {subsector_id: $("#" + lista).val()}, function(data) {
         $("#" + lista_actualizar).html(data);
         $('#s2id_' + lista_actualizar + ' a span').html($("#" + lista_actualizar + " option[id='p']").html());
