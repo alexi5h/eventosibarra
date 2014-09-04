@@ -77,7 +77,16 @@ class RamaActividadController extends AweController {
     public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
+            $rama_Actividad= $this->loadModel($id);
+            $participantes=$rama_Actividad->participantes;
+            $actividades=$rama_Actividad->actividads;
+            if (count($participantes) == 0 && count($actividades)==0) {
+                $rama_Actividad->estado= RamaActividad::ESTADO_INACTIVO;
+                $rama_Actividad->save();
+                echo '<div class = "alert alert-success"><button data-dismiss = "alert" class = "close" type = "button">×</button>Borrado Exitosamente.</div>';
+            }else{
+                echo '<div class = "alert alert-error"><button data-dismiss = "alert" class = "close" type = "button">×</button>Imposible eliminar la Rama de Actividad, existen Actividades o Participantes que dependen de ésta.</div>';
+            }
 
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))

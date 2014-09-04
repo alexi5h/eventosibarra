@@ -77,8 +77,16 @@ class SectorController extends AweController {
     public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
-
+            $sector= $this->loadModel($id);
+            $participantes=$sector->participantes;
+            $subsectores=$sector->subsectors;
+            if (count($participantes) == 0 && count($subsectores)==0) {
+                $sector->estado=  Sector::ESTADO_INACTIVO;
+                $sector->save();
+                echo '<div class = "alert alert-success"><button data-dismiss = "alert" class = "close" type = "button">×</button>Borrado Exitosamente.</div>';
+            }else{
+                echo '<div class = "alert alert-error"><button data-dismiss = "alert" class = "close" type = "button">×</button>Imposible eliminar el sector, existen Subsectores o Participantes que dependen de éste.</div>';
+            }
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

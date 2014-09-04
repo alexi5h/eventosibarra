@@ -9,6 +9,12 @@ class RamaActividad extends BaseRamaActividad {
 
     public $sector_id;
 
+    public function relations() {
+        return array_merge(parent::relations(), array(
+            'participantes' => array(self::HAS_MANY, 'Participante', 'rama_actividad_id'),
+        ));
+    }
+    
     public function scopes() {
         return array(
             'activos' => array(
