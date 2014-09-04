@@ -81,8 +81,7 @@ class ActividadController extends AweController {
             $actividad= $this->loadModel($id);
             $participantes=$actividad->participantes;
             if (count($participantes) == 0) {
-                $actividad->estado= Actividad::ESTADO_INACTIVO;
-                $actividad->save();
+                Actividad::model()->updateByPk($id,array('estado'=>Actividad::ESTADO_INACTIVO));
                 echo '<div class = "alert alert-success"><button data-dismiss = "alert" class = "close" type = "button">×</button>Borrado Exitosamente.</div>';
             }else{
                 echo '<div class = "alert alert-error"><button data-dismiss = "alert" class = "close" type = "button">×</button>Imposible eliminar la Actividad, existen Participantes que dependen de ésta.</div>';

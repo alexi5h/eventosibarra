@@ -81,8 +81,7 @@ class RamaActividadController extends AweController {
             $participantes=$rama_Actividad->participantes;
             $actividades=$rama_Actividad->actividads;
             if (count($participantes) == 0 && count($actividades)==0) {
-                $rama_Actividad->estado= RamaActividad::ESTADO_INACTIVO;
-                $rama_Actividad->save();
+                RamaActividad::model()->updateByPk($id,array('estado'=>RamaActividad::ESTADO_INACTIVO));
                 echo '<div class = "alert alert-success"><button data-dismiss = "alert" class = "close" type = "button">×</button>Borrado Exitosamente.</div>';
             }else{
                 echo '<div class = "alert alert-error"><button data-dismiss = "alert" class = "close" type = "button">×</button>Imposible eliminar la Rama de Actividad, existen Actividades o Participantes que dependen de ésta.</div>';
