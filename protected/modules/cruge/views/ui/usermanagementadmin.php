@@ -1,19 +1,12 @@
 <?php
 /** @var FormController $this */
 /** @var Form $model */
-
 $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
 ?>
-
-<div class="widget blue">
-    <div class="widget-title">
-        <h4><i class="icon-user"></i> <?php echo ucwords(CrugeTranslator::t('admin', 'Manage Users')); ?></h4>
-        <span class="tools">
-            <a href="javascript:;" class="icon-chevron-down"></a>
-            <!--a href="javascript:;" class="icon-remove"></a-->
-        </span>
-     </div>
-    <div class="widget-body form">
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading"> <?php echo ucwords(CrugeTranslator::t('admin', 'Manage Users')); ?></div>
+    <div class="panel-body">
         <?php
         /*
           para darle los atributos al CGridView de forma de ser consistente con el sistema Cruge
@@ -23,7 +16,7 @@ $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
          */
         $cols = array();
 
-    // presenta los campos de ICrugeStoredUser
+        // presenta los campos de ICrugeStoredUser
         foreach (Yii::app()->user->um->getSortFieldNamesForICrugeStoredUser() as $key => $fieldName) {
             $value = null; // default
             $filter = null; // default, textbox
@@ -39,17 +32,17 @@ $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
                 $cols[] = array('name' => $fieldName, 'value' => $value, 'filter' => $filter, 'type' => $type);
             }
         }
-
         $cols[] = array(
-            'class' => 'CButtonColumn',
+            'htmlOptions' => array('nowrap' => 'nowrap'),
+            'class' => 'booster.widgets.TbButtonColumn',
             'template' => '{update}',
             'deleteConfirmation' => CrugeTranslator::t('admin', 'Are you sure you want to delete this user'),
             'buttons' => array(
                 'update' => array(
-                    'label'=>'<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
-                    'options'=>array('title'=>CrugeTranslator::t('admin', 'Update User')),
+                    'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
+                    'options' => array('title' => CrugeTranslator::t('admin', 'Update User')),
                     'url' => 'array("usermanagementupdate","id"=>$data->getPrimaryKey())',
-                    'imageUrl'=>false,
+                    'imageUrl' => false,
                 ),
             ),
         );
@@ -61,6 +54,5 @@ $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
             'columns' => $cols
         ));
         ?>
-        
     </div>
 </div>
