@@ -52,7 +52,7 @@ class ParticipanteController extends AweController {
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id, $r = null) {
         $model = $this->loadModel($id);
 
         $this->performAjaxValidation($model, 'participante-form');
@@ -60,7 +60,11 @@ class ParticipanteController extends AweController {
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];
             if ($model->save()) {
-                $this->redirect(array('admin'));
+                if ($r != null) {
+                    $this->redirect(array('admin'));
+                } else {
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
             }
         }
 

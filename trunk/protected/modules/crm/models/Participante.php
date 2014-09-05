@@ -22,6 +22,15 @@ class Participante extends BaseParticipante
         );
     }
     
+    public function attributeLabels() {
+        return array_merge(parent::attributeLabels(), array(
+            'telefono' => Yii::t('app', 'Teléfono'),
+            'email' => Yii::t('app', 'E-mail'),
+            'rama_actividad_id'=> Yii::t('app', 'Rama de Actividad'),
+            'direccion' => Yii::t('app', 'Dirección'),
+        ));
+    }
+    
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
