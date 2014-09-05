@@ -6,12 +6,13 @@
 // CWebApplication properties can be configured here.
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'My Web Application',
+    'name' => 'Primer prototipo',
     'language' => 'es',
     'theme' => 'orange',
     // preloading 'log' component
     'preload' => array('log', 'bootstrap'),
-    'defaultController' => 'crm/participante/admin',
+//    'defaultController' => 'crm/participante/admin',
+    'defaultController' => 'crm/dashboard/index',
     // autoloading model and component classes
     'import' => array(
         'application.models.*',
@@ -122,7 +123,8 @@ return array(
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
-            'errorAction' => 'crm/participante/admin',
+//            'errorAction' => 'crm/participante/admin',
+            'errorAction' => '/crm/dashboard/error',
         ),
         'log' => array(
             'class' => 'CLogRouter',
