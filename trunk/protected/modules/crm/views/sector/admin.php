@@ -21,9 +21,9 @@ $this->menu = array(
             'dataProvider' => $model->activos()->search(),
             'columns' => array(
                 'nombre',
-//                array(
+//                        array(
 //                    'name' => 'estado',
-//                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
+//                    'filter' => array('ACTIVO'=>'ACTIVO','INACTIVO'=>'INACTIVO',),
 //                ),
                 array(
                     'htmlOptions' => array('nowrap' => 'nowrap'),

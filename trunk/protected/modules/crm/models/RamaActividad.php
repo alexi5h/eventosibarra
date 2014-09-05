@@ -14,7 +14,7 @@ class RamaActividad extends BaseRamaActividad {
             'participantes' => array(self::HAS_MANY, 'Participante', 'rama_actividad_id'),
         ));
     }
-    
+
     public function scopes() {
         return array(
             'activos' => array(
@@ -35,7 +35,8 @@ class RamaActividad extends BaseRamaActividad {
 
     public function rules() {
         return array_merge(parent::rules(), array(
-            array('sector_id', 'required')
+            array('sector_id', 'required'),
+            array('sector_id', 'safe', 'on' => 'search'),
         ));
     }
 
