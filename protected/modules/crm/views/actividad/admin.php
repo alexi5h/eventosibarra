@@ -21,9 +21,19 @@ $this->menu = array(
             'dataProvider' => $model->activos()->search(),
             'columns' => array(
                 'nombre',
+//                array(
+//                    'name' => 'estado',
+//                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
+//                ),
                 array(
-                    'name' => 'estado',
-                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
+                    'name' => 'sector_id',
+                    'value' => 'isset($data->ramaActividad) ? $data->ramaActividad->subsector->sector : null',
+                    'filter' => CHtml::listData(RamaActividad::model()->findAll(), 'id', RamaActividad::representingColumn()),
+                ),
+                array(
+                    'name' => 'subsector_id',
+                    'value' => 'isset($data->ramaActividad) ? $data->ramaActividad->subsector : null',
+                    'filter' => CHtml::listData(RamaActividad::model()->findAll(), 'id', RamaActividad::representingColumn()),
                 ),
                 array(
                     'name' => 'rama_actividad_id',

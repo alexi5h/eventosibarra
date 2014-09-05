@@ -26,13 +26,17 @@ $this->menu = array(
 //                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
 //                ),
                 array(
+                    'name' => 'sector_id',
+                    'value' => 'isset($data->subsector->sector) ? $data->subsector->sector : null',
+                    'filter' => CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()),
+                ),
+                array(
                     'name' => 'subsector_id',
                     'value' => 'isset($data->subsector) ? $data->subsector : null',
                     'filter' => CHtml::listData(Subsector::model()->findAll(), 'id', Subsector::representingColumn()),
                 ),
                 array(
-                                        'htmlOptions' => array('nowrap' => 'nowrap'),
-
+                    'htmlOptions' => array('nowrap' => 'nowrap'),
                     'class' => 'booster.widgets.TbButtonColumn',
                     'template' => '{update} {delete}',
                     'afterDelete' => 'function(link,success,data){ 
