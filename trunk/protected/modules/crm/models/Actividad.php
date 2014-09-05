@@ -27,6 +27,7 @@ class Actividad extends BaseActividad {
         return array_merge(parent::attributeLabels(), array(
             'sector_id' => Yii::t('app', 'Sector'),
             'subsector_id' => Yii::t('app', 'Subsector'),
+            'rama_actividad_id' => Yii::t('app', 'Rama de Actividad'),
         ));
     }
     
@@ -49,7 +50,7 @@ class Actividad extends BaseActividad {
     }
 
     public static function label($n = 1) {
-        return Yii::t('app', 'Actividad|Actividads', $n);
+        return Yii::t('app', 'Actividad|Actividades', $n);
     }
 
 }
