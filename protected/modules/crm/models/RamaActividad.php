@@ -47,7 +47,7 @@ class RamaActividad extends BaseRamaActividad {
     }
 
     public static function label($n = 1) {
-        return Yii::t('app', 'RamaActividad|RamaActividads', $n);
+        return Yii::t('app', 'Rama de Actividad|Ramas de Actividades', $n);
     }
 
 }

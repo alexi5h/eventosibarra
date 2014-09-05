@@ -21,10 +21,10 @@ $this->menu = array(
             'dataProvider' => $model->activos()->search(),
             'columns' => array(
                 'nombre',
-                array(
-                    'name' => 'estado',
-                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
-                ),
+//                array(
+//                    'name' => 'estado',
+//                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
+//                ),
                 array(
                     'name' => 'sector_id',
                     'value' => 'isset($data->sector) ? $data->sector : null',
