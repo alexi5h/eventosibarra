@@ -123,7 +123,7 @@ class RamaActividadController extends AweController {
                         echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
                     }
                 } else {
-                    echo CHtml::tag('option', array('value' => null), '- No existen opciones -', true);
+                    echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- No existen opciones -', true);
                 }
             } else {
                 echo CHtml::tag('option', array('value' => null, 'id' => 'p'), '- Seleccione un subsector -', true);

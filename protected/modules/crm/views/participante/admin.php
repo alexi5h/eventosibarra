@@ -53,7 +53,7 @@ $this->menu = array(
                     array(
                         'htmlOptions' => array('nowrap' => 'nowrap'),
                         'class' => 'booster.widgets.TbButtonColumn',
-                        'template' => '{update} {delete}',
+                        'template' => '{view} {update} {delete}',
                         'afterDelete' => 'function(link,success,data){ 
                     if(success) {
                          $("#flashMsg").empty();
@@ -62,9 +62,17 @@ $this->menu = array(
                     }
                     }',
                         'buttons' => array(
+                            'view' => array(
+                                'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
+                                'options' => array('title' => 'Ver Info'),
+                                'imageUrl' => false,
+                                //'url' => 'Yii::app()->createUrl("crm/participante/view",array("id"=>$data->id))',
+                            //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
+                            ),
                             'update' => array(
                                 'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
                                 'options' => array('title' => 'Actualizar'),
+                                'url'=>'Yii::app()->createUrl("/crm/participante/update/id/".$data->id."/r/0")',
                                 'imageUrl' => false,
                             //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
                             ),
