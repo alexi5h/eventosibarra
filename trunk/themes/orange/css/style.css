@@ -1,19 +1,4 @@
-
-/* 2nd level */
-/*.tree {
-    display: none;
-}*/
-
-/*.tree > li > label {
-    padding:10px 15px;
-}
-
- 3rd level 
-.tree > li > ul > li > a {
-    color:#cc0000;
-    font-size:10pt;
-    margin-left:15px;
-}*/
+/*/menu vertical*/
 body{margin:50px;}
 #accordion .glyphicon { margin-right:10px; }
 .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
@@ -27,3 +12,17 @@ body{margin:50px;}
 
 .panel-collapse div.list-group div.list-group{margin: 0;}
 .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd;border-bottom: 0;padding-left: 30px;}
+/*/ fin menu vertical*/
+
+/*/login*/
+body#login{
+    background: url(http://mymaplist.com/img/parallax/back.png);
+    background-color: #444;
+    /*background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);*/    
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}
+
+/*/fin login*/
