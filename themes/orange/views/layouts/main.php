@@ -21,13 +21,13 @@
 
     <!-- BEGIN BODY -->
     <body >
-        <div class="container-fluid">
+        <div class="">
             <div class="row">
                 <div class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
                         <div class="navbar-header">
                             <a href="<?php echo Yii::app()->homeUrl ?>" class="navbar-brand">
-                                Bootswatch
+                                Primer prototipo
                             </a>
                             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                                 <span class="icon-bar"></span>
@@ -75,9 +75,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
 
-                <div class="row">
+            <div class="row">
+                <?php if (!Yii::app()->user->isGuest) : ?>
                     <div class="col-sm-3 col-md-3">
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
@@ -102,6 +102,7 @@
                                         <li class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span><a href="<?php print Yii::app()->baseUrl . '/crm/subsector'; ?>">Subsectores</a></li>
 
                                         <li class="list-group-item"> <span class="glyphicon glyphicon-briefcase"></span><a href="<?php print Yii::app()->baseUrl . '/crm/ramaActividad'; ?>">Rama de actividades</a></li>
+                                        <li class="list-group-item"> <span class="glyphicon glyphicon-leaf"></span><a href="<?php print Yii::app()->baseUrl . '/crm/actividad'; ?>">Actividades</a></li>
 
                                     </ul>
                                 </div>
@@ -116,10 +117,10 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-9 col-md-9">
-                        <?php echo $content; ?>
+                <?php endif; ?>
+                <div class="col-sm-9 col-md-9">
+                    <?php echo $content; ?>
 
-                    </div>
                 </div>
             </div>
 
