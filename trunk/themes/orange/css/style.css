@@ -16,7 +16,8 @@ body{margin:50px;}
 
 /*/login*/
 body#login{
-    background: url(http://mymaplist.com/img/parallax/back.png);
+    background: url(../img/back.png);
+    /*background: url(http://mymaplist.com/img/parallax/back.png);*/
     background-color: #444;
     /*background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);*/    
 }

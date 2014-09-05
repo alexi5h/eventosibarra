@@ -26,7 +26,7 @@
                 <?php echo $form->checkBox($model, 'rememberMe'); ?> Recordarme más tarde
             </label>    
         </div>
-        <input class="btn btn-lg btn-info btn-block" type="submit" value="<?php echo CrugeTranslator::t('logon', "Login") ?>">
+        <input class="btn btn-lg btn-success btn-block" type="submit" value="<?php echo CrugeTranslator::t('logon', "Login") ?>">
     </fieldset>
     <?php $this->endWidget(); ?>
 <?php endif; ?>
