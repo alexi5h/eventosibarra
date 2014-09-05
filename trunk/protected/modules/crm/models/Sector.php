@@ -33,7 +33,7 @@ class Sector extends BaseSector {
     }
 
     public static function label($n = 1) {
-        return Yii::t('app', 'Sector|Sectors', $n);
+        return Yii::t('app', 'Sector|Sectores', $n);
     }
 
 }

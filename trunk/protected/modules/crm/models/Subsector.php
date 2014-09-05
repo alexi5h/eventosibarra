@@ -32,7 +32,7 @@ class Subsector extends BaseSubsector {
     }
 
     public static function label($n = 1) {
-        return Yii::t('app', 'Subsector|Subsectors', $n);
+        return Yii::t('app', 'Subsector|Subsectores', $n);
     }
 
 }
