@@ -25,6 +25,7 @@ return array(
     ),
     'modules' => array(
         'crm',
+        'eventos',
         'cruge' => array(
             'tableprefix' => 'cruge_',
             // para que utilice a protected.modules.cruge.models.auth.CrugeAuthDefault.php
