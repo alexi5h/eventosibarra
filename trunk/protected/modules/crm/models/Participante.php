@@ -29,6 +29,7 @@ class Participante extends BaseParticipante
             'email' => Yii::t('app', 'E-mail'),
             'rama_actividad_id'=> Yii::t('app', 'Rama de Actividad'),
             'direccion' => Yii::t('app', 'Dirección'),
+            'evento_id' => Yii::t('app', 'Evento'),
         ));
     }
     
