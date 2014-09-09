@@ -7,7 +7,7 @@
  * property or method in class "Evento".
  *
  * Columns in table "evento" available as properties of the model,
- * and there are no model relations.
+ * followed by relations of table "evento" available as properties of the model.
  *
  * @property integer $id
  * @property string $nombre
@@ -16,6 +16,7 @@
  * @property string $estado
  * @property string $descripcion
  *
+ * @property EventoParticipante[] $eventoParticipantes
  */
 abstract class BaseEvento extends AweActiveRecord {
 
@@ -45,6 +46,7 @@ abstract class BaseEvento extends AweActiveRecord {
 
     public function relations() {
         return array(
+            'eventoParticipantes' => array(self::HAS_MANY, 'EventoParticipante', 'evento_id'),
         );
     }
 
@@ -59,6 +61,7 @@ abstract class BaseEvento extends AweActiveRecord {
                 'fecha_fin' => Yii::t('app', 'Fecha Fin'),
                 'estado' => Yii::t('app', 'Estado'),
                 'descripcion' => Yii::t('app', 'Descripcion'),
+                'eventoParticipantes' => null,
         );
     }
 

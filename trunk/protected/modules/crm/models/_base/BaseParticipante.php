@@ -25,6 +25,7 @@
  * @property integer $actividad_id
  * @property integer $evento_id
  *
+ * @property EventoParticipante[] $eventoParticipantes
  * @property Actividad $actividad
  * @property RamaActividad $ramaActividad
  * @property Sector $sector
@@ -64,6 +65,7 @@ abstract class BaseParticipante extends AweActiveRecord {
 
     public function relations() {
         return array(
+            'eventoParticipantes' => array(self::HAS_MANY, 'EventoParticipante', 'participante_id'),
             'actividad' => array(self::BELONGS_TO, 'Actividad', 'actividad_id'),
             'ramaActividad' => array(self::BELONGS_TO, 'RamaActividad', 'rama_actividad_id'),
             'sector' => array(self::BELONGS_TO, 'Sector', 'sector_id'),
@@ -91,6 +93,7 @@ abstract class BaseParticipante extends AweActiveRecord {
                 'rama_actividad_id' => Yii::t('app', 'Rama Actividad'),
                 'actividad_id' => Yii::t('app', 'Actividad'),
                 'evento_id' => Yii::t('app', 'Evento'),
+                'eventoParticipantes' => null,
                 'actividad' => null,
                 'ramaActividad' => null,
                 'sector' => null,
