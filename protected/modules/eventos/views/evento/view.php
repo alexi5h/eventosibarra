@@ -1,29 +1,57 @@
 <?php
 /** @var EventoController $this */
 /** @var Evento $model */
-
-$this->menu=array(
-    //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . Evento::label(2), 'icon' => 'list', 'url' => array('index')),
-    array('label' => "<div>" . CHtml::image(Yii::app()->baseUrl . "/images/topbar/administrar.png") . "</div>" . Yii::t('AweCrud.app', 'Manage'), 'url' => array('admin')),
-    array('label' => "<div>" . CHtml::image(Yii::app()->baseUrl . "/images/topbar/nuevo.png") . "</div>" .  Yii::t('AweCrud.app', 'Create'), 'url' => array('create')),
-    //array('label' => Yii::t('AweCrud.app', 'View'), 'icon' => 'eye-open', 'itemOptions'=>array('class'=>'active')),
-    //array('label' => Yii::t('AweCrud.app', 'Update'), 'icon' => 'pencil', 'url' => array('update', 'id' => $model->id)),
-    //array('label' => Yii::t('AweCrud.app', 'Delete'), 'icon' => 'trash', 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => Yii::t('AweCrud.app', 'Are you sure you want to delete this item?'))),
-    
-);
 ?>
+<div class="panel panel-default">
+    <!--<div class="panel-heading"><?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Evento::label(2) ?> </div>-->
+    <div class="panel-body">
+        <div class="timeline-centered">
 
-<fieldset>
-    <legend><?php echo Yii::t('AweCrud.app', 'View'); ?> </legend>
+            <article class="timeline-entry">
 
-<?php $this->widget('booster.widgets.TbDetailView',array(
-	'data' => $model,
-	'attributes' => array(
-                  'nombre',
-             'fecha_inicio',
-             'fecha_fin',
-             'estado',
-             'descripcion',
-	),
-)); ?>
-</fieldset>
+                <div class="timeline-entry-inner">
+
+                    <div class="timeline-icon bg-info">
+                        <i class="entypo-feather"></i>
+                    </div>
+                </div>
+
+            </article>
+            <article class="timeline-entry left-aligned">
+
+                <div class="timeline-entry-inner">
+                    <time class="timeline-time" datetime="<?php echo $model->fecha_inicio ?>"><span><?php echo Util::FormatDate($model->fecha_inicio, 'd/m/Y'); ?></span> <span></span></time>
+
+                    <div class="timeline-icon bg-success">
+                        <i class="entypo-suitcase"></i>
+                    </div>
+
+                    <div class="timeline-label">
+                        <h2><?php echo $model->nombre ?></h2>
+                        <blockquote><?php echo $model->descripcion ?></blockquote>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">Link</span>
+                            <input type="text" class="form-control" placeholder="" value="<?php print Yii::app()->baseUrl . '/crm/register/participant/ie/' . $model->id; ?>">
+                        </div> 
+                    </div>
+                </div>
+
+            </article>
+
+
+
+            <article class="timeline-entry begin">
+
+                <div class="timeline-entry-inner">
+
+                    <div class="timeline-icon bg-secondary" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                        <i class="entypo-flight"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+    </div>
+</div>
