@@ -21,7 +21,10 @@ return array(
 //        cruge
         'application.modules.cruge.components.*',
         'application.modules.cruge.extensions.crugemailer.*',
+//        crm
         'application.modules.crm.models.*',
+//        eventos
+        'application.modules.eventos.models.*',
     ),
     'modules' => array(
         'crm',

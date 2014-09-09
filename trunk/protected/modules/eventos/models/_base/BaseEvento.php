@@ -16,7 +16,7 @@
  * @property string $estado
  * @property string $descripcion
  *
- * @property EventoParticipante[] $eventoParticipantes
+ * @property Participante[] $participantes
  */
 abstract class BaseEvento extends AweActiveRecord {
 
@@ -46,7 +46,7 @@ abstract class BaseEvento extends AweActiveRecord {
 
     public function relations() {
         return array(
-            'eventoParticipantes' => array(self::HAS_MANY, 'EventoParticipante', 'evento_id'),
+            'participantes' => array(self::MANY_MANY, 'Participante', 'participante_has_evento(evento_id, participante_id)'),
         );
     }
 
@@ -61,7 +61,7 @@ abstract class BaseEvento extends AweActiveRecord {
                 'fecha_fin' => Yii::t('app', 'Fecha Fin'),
                 'estado' => Yii::t('app', 'Estado'),
                 'descripcion' => Yii::t('app', 'Descripcion'),
-                'eventoParticipantes' => null,
+                'participantes' => null,
         );
     }
 

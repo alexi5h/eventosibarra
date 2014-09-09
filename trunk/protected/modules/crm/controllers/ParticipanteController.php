@@ -37,8 +37,8 @@ class ParticipanteController extends AweController {
         $this->performAjaxValidation($model, 'participante-form');
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];
-
             if ($model->save()) {
+                $model->saveManyMany('eventos', array($model->evento_id));
                 $this->redirect(array('admin'));
             }
         }

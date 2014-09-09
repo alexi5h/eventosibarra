@@ -37,6 +37,7 @@ Util::tsRegisterAssetJs('_form.js');
             <?php
             if ($model->isNewRecord) {
                 $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
+                $data_evento = CHtml::listData(Evento::model()->getEventos(), 'id', 'nombre');
                 $data_subsector = null;
                 $data_rama_actividad = null;
                 $data_actividad = null;
@@ -62,6 +63,22 @@ Util::tsRegisterAssetJs('_form.js');
                                     )), 'id', Actividad::representingColumn());
                 }
             }
+            ?>
+            <?php
+            echo $form->select2Group(
+                    $model, 'evento_id', array(
+                'wrapperHtmlOptions' => array(
+                    'class' => 'col-sm-8',
+                ),
+                'widgetOptions' => array(
+                    'data' => $data_evento ? array(null => ' -- Seleccione Evento -- ') + $data_evento : array(null => ' -- Ninguno -- '),
+                    'asDropDownList' => true,
+                    'options' => array(
+                        'tokenSeparators' => array(',', ' ')
+                    )
+                )
+                    )
+            );
             ?>
             <?php
             echo $form->select2Group(

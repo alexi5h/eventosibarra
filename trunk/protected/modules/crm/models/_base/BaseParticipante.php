@@ -23,13 +23,12 @@
  * @property integer $subsector_id
  * @property integer $rama_actividad_id
  * @property integer $actividad_id
- * @property integer $evento_id
  *
- * @property EventoParticipante[] $eventoParticipantes
  * @property Actividad $actividad
  * @property RamaActividad $ramaActividad
  * @property Sector $sector
  * @property Subsector $subsector
+ * @property Evento[] $eventos
  */
 abstract class BaseParticipante extends AweActiveRecord {
 
@@ -47,8 +46,8 @@ abstract class BaseParticipante extends AweActiveRecord {
 
     public function rules() {
         return array(
-            array('nombres, apellidos, tipo, cedula, sector_id, subsector_id, evento_id', 'required'),
-            array('sector_id, subsector_id, rama_actividad_id, actividad_id, evento_id', 'numerical', 'integerOnly'=>true),
+            array('nombres, apellidos, tipo, cedula, sector_id, subsector_id', 'required'),
+            array('sector_id, subsector_id, rama_actividad_id, actividad_id', 'numerical', 'integerOnly'=>true),
             array('email', 'email'),
             array('nombres, apellidos', 'length', 'max'=>128),
             array('tipo', 'length', 'max'=>3),
@@ -59,17 +58,17 @@ abstract class BaseParticipante extends AweActiveRecord {
             array('tipo', 'in', 'range' => array('N','E','CIA','COO','ASO')), // enum,
             array('estado', 'in', 'range' => array('ACTIVO','INACTIVO')), // enum,
             array('telefono, email, direccion, celular, estado, rama_actividad_id, actividad_id', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('id, nombres, apellidos, tipo, telefono, email, direccion, cedula, celular, estado, sector_id, subsector_id, rama_actividad_id, actividad_id, evento_id', 'safe', 'on'=>'search'),
+            array('id, nombres, apellidos, tipo, telefono, email, direccion, cedula, celular, estado, sector_id, subsector_id, rama_actividad_id, actividad_id', 'safe', 'on'=>'search'),
         );
     }
 
     public function relations() {
         return array(
-            'eventoParticipantes' => array(self::HAS_MANY, 'EventoParticipante', 'participante_id'),
             'actividad' => array(self::BELONGS_TO, 'Actividad', 'actividad_id'),
             'ramaActividad' => array(self::BELONGS_TO, 'RamaActividad', 'rama_actividad_id'),
             'sector' => array(self::BELONGS_TO, 'Sector', 'sector_id'),
             'subsector' => array(self::BELONGS_TO, 'Subsector', 'subsector_id'),
+            'eventos' => array(self::MANY_MANY, 'Evento', 'participante_has_evento(participante_id, evento_id)'),
         );
     }
 
@@ -92,12 +91,11 @@ abstract class BaseParticipante extends AweActiveRecord {
                 'subsector_id' => Yii::t('app', 'Subsector'),
                 'rama_actividad_id' => Yii::t('app', 'Rama Actividad'),
                 'actividad_id' => Yii::t('app', 'Actividad'),
-                'evento_id' => Yii::t('app', 'Evento'),
-                'eventoParticipantes' => null,
                 'actividad' => null,
                 'ramaActividad' => null,
                 'sector' => null,
                 'subsector' => null,
+                'eventos' => null,
         );
     }
 
@@ -118,7 +116,6 @@ abstract class BaseParticipante extends AweActiveRecord {
         $criteria->compare('subsector_id', $this->subsector_id);
         $criteria->compare('rama_actividad_id', $this->rama_actividad_id);
         $criteria->compare('actividad_id', $this->actividad_id);
-        $criteria->compare('evento_id', $this->evento_id);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
