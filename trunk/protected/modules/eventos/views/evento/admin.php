@@ -34,7 +34,7 @@ $this->menu = array(
                     array(
                         'htmlOptions' => array('nowrap' => 'nowrap'),
                         'class' => 'booster.widgets.TbButtonColumn',
-                        'template' => '{update} {delete}',
+                        'template' => '{view} {update} {delete}',
                         'afterDelete' => 'function(link,success,data){ 
                     if(success) {
                          $("#flashMsg").empty();
