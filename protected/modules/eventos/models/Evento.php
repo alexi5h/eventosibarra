@@ -20,7 +20,6 @@ class Evento extends BaseEvento {
 
     public function relations() {
         return array(
-            
         );
     }
 
@@ -33,6 +32,21 @@ class Evento extends BaseEvento {
                 ),
             ),
         );
+    }
+
+    public function getEventos() {
+        //select * from evento t 
+        //  where t.fecha_inicio >= now() or t.fecha_fin>=now() and t.estado='ACTIVO'
+        //order by t.fecha_inicio, t.fecha_fin
+        $command = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('evento t')
+                ->where('t.fecha_inicio >= :fecha_inicio or t.fecha_fin>=:fecha_fin and t.estado=:estado', array(
+                    ':fecha_inicio' => Util::FormatDate(Util::FechaActual(), 'Y-m-d') . ' 00:00:00',
+                    ':fecha_fin' => Util::FormatDate(Util::FechaActual(), 'Y-m-d') . ' 23:59:59',
+                    ':estado' => self::ESTADO_ACTIVO))
+                ->order('t.fecha_inicio, t.fecha_fin');
+        return $command->queryAll();
     }
 
 }

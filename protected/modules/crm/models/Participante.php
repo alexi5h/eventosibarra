@@ -7,6 +7,7 @@ class Participante extends BaseParticipante
     //estado: ACTIVO,INACTIVO
     const ESTADO_ACTIVO = 'ACTIVO';
     const ESTADO_INACTIVO = 'INACTIVO';
+    public $evento_id;
     /**
      * @return Participante
      */

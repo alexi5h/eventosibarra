@@ -1,5 +1,5 @@
 ﻿# Host: 127.0.0.1  (Version: 5.6.17)
-# Date: 2014-09-08 19:13:24
+# Date: 2014-09-08 21:32:59
 # Generator: MySQL-Front 5.3  (Build 4.156)
 
 /*!40101 SET NAMES utf8 */;
@@ -245,7 +245,6 @@ CREATE TABLE `participante` (
   `subsector_id` int(11) NOT NULL,
   `rama_actividad_id` int(11) DEFAULT NULL,
   `actividad_id` int(11) DEFAULT NULL,
-  `evento_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_persona_sector1_idx` (`sector_id`),
   KEY `fk_persona_subsector1_idx` (`subsector_id`),
@@ -255,18 +254,19 @@ CREATE TABLE `participante` (
   CONSTRAINT `fk_persona_rama_actividad1` FOREIGN KEY (`rama_actividad_id`) REFERENCES `rama_actividad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_sector1` FOREIGN KEY (`sector_id`) REFERENCES `sector` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_subsector1` FOREIGN KEY (`subsector_id`) REFERENCES `subsector` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 #
-# Structure for table "evento_participante"
+# Structure for table "participante_has_evento"
 #
 
-DROP TABLE IF EXISTS `evento_participante`;
-CREATE TABLE `evento_participante` (
-  `evento_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `participante_has_evento`;
+CREATE TABLE `participante_has_evento` (
   `participante_id` int(11) NOT NULL,
-  KEY `fk_evento_participante_evento1_idx` (`evento_id`),
-  KEY `fk_evento_participante_participante1_idx` (`participante_id`),
-  CONSTRAINT `fk_evento_participante_evento1` FOREIGN KEY (`evento_id`) REFERENCES `evento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_evento_participante_participante1` FOREIGN KEY (`participante_id`) REFERENCES `participante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `evento_id` int(11) NOT NULL,
+  PRIMARY KEY (`participante_id`,`evento_id`),
+  KEY `fk_participante_has_evento_evento1_idx` (`evento_id`),
+  KEY `fk_participante_has_evento_participante1_idx` (`participante_id`),
+  CONSTRAINT `fk_participante_has_evento_participante1` FOREIGN KEY (`participante_id`) REFERENCES `participante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_participante_has_evento_evento1` FOREIGN KEY (`evento_id`) REFERENCES `evento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

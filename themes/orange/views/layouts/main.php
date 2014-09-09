@@ -91,7 +91,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-tasks">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#"><span class="glyphicon glyphicon-tasks">
                                             </span>Cat&aacute;logo</a>
                                     </h4>
                                 </div>
@@ -118,9 +118,15 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a   href="<?php print Yii::app()->baseUrl . '/eventos/evento'; ?>"><span class="glyphicon glyphicon-calendar">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#"><span class="glyphicon glyphicon-calendar">
                                             </span>Eventos</a>
                                     </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse in">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><span class="glyphicon glyphicon-dashboard"></span><a href="<?php print Yii::app()->baseUrl . '/eventos/evento'; ?>">Administrar</a></li>
+                                        <li class="list-group-item"><span class="glyphicon glyphicon-cloud-upload"></span><a href="<?php print Yii::app()->baseUrl . '/eventos/evento/generateUrl'; ?>">Generar Url</a></li>
+                                    </ul>
                                 </div>
                             </div>
 

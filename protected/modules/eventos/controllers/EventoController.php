@@ -119,6 +119,20 @@ class EventoController extends AweController {
     }
 
     /**
+     * Manages all models.
+     */
+    public function actionGenerateUrl() {
+        $model = new Evento('search');
+        $model->unsetAttributes(); // clear any default values
+        if (isset($_GET['Evento']))
+            $model->attributes = $_GET['Evento'];
+
+        $this->render('_form_generateUrl', array(
+            'model' => $model,
+        ));
+    }
+
+    /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the ID of the model to be loaded
