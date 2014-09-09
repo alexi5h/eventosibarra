@@ -2,7 +2,7 @@
 /** @var EventoController $this */
 /** @var Evento $model */
 $this->menu = array(
-    array('label' => Yii::t('AweCrud.app', 'Create'), 'icon' => 'plus', 'url' => array('create'), 
+    array('label' => Yii::t('AweCrud.app', 'Create'), 'icon' => 'plus', 'url' => array('create'),
     //'visible' => (Util::checkAccess(array('action_incidenciaPrioridad_create')))
     ),
 );
@@ -10,58 +10,59 @@ $this->menu = array(
 <div id="flashMsg"  class="flash-messages">
 
 </div> 
-<div class="widget blue">
-    <div class="widget-title">
-        <h4> <i class="icon-fire-extinguisher"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Evento::label(2) ?> </h4>
-        <span class="tools">
-            <a href="javascript:;" class="icon-chevron-down"></a>
-            <!--a href="javascript:;" class="icon-remove"></a-->
-        </span>
-    </div>
-    <div class="widget-body">
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading"><?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Evento::label(2) ?> </div>
+    <div class="panel-body">
+        <div style='overflow:auto'> 
 
-            <?php 
-        $this->widget('booster.widgets.TbGridView',array(
-        'id' => 'evento-grid',
-        'type' => 'striped bordered hover advance',
-        'dataProvider' => $model->search(),
-        'columns' => array(
+            <?php
+            $this->widget('booster.widgets.TbGridView', array(
+                'id' => 'evento-grid',
+                'type' => 'striped bordered hover advance',
+                'dataProvider' => $model->activos()->search(),
+                'columns' => array(
                     'nombre',
-                        'fecha_inicio',
-                        'fecha_fin',
-                        array(
-                    'name' => 'estado',
-                    'filter' => array('ACTIVO'=>'ACTIVO','INACTIVO'=>'INACTIVO',),
-                ),
                     array(
-                    'class' => 'CButtonColumn',
-                    'template' => '{update} {delete}',
-                    'afterDelete' => 'function(link,success,data){ 
+                        'name' => 'fecha_inicio',
+                        'value' => 'Util::FormatDate($data->fecha_inicio, "d/m/Y")'
+                    ),
+                    array(
+                        'name' => 'fecha_fin',
+                        'value' => 'Util::FormatDate($data->fecha_fin, "d/m/Y")'
+                    ),
+                    array(
+                        'htmlOptions' => array('nowrap' => 'nowrap'),
+                        'class' => 'booster.widgets.TbButtonColumn',
+                        'template' => '{update} {delete}',
+                        'afterDelete' => 'function(link,success,data){ 
                     if(success) {
                          $("#flashMsg").empty();
                          $("#flashMsg").css("display","");
                          $("#flashMsg").html(data).animate({opacity: 1.0}, 5500).fadeOut("slow");
                     }
                     }',
-                    'buttons' => array(
-                        'update' => array(
-                            'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
-                            'options' => array('title' => 'Actualizar'),
-                            'imageUrl' => false,
-                             //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
-                        ),
-                        'delete' => array(
-                            'label' => '<button class="btn btn-danger"><i class="icon-trash"></i></button>',
-                            'options' => array('title' => 'Eliminar'),
-                            'imageUrl' => false,
+                        'buttons' => array(
+                            'update' => array(
+                                'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
+                                'options' => array('title' => 'Actualizar'),
+                                'imageUrl' => false,
+                            //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
+                            ),
+                            'delete' => array(
+                                'label' => '<button class="btn btn-danger"><i class="icon-trash"></i></button>',
+                                'options' => array('title' => 'Eliminar'),
+                                'imageUrl' => false,
                             //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_delete"))'
+                            ),
                         ),
+                        'htmlOptions' => array(
+                            'width' => '80px'
+                        )
                     ),
-                    'htmlOptions' => array(
-                        'width' => '80px'
-                    )
                 ),
-        ),
-        )); ?>
+            ));
+            ?>
+        </div>
     </div>
 </div>

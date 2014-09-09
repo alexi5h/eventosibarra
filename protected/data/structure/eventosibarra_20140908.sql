@@ -1,5 +1,5 @@
 ﻿# Host: 127.0.0.1  (Version: 5.6.17)
-# Date: 2014-09-08 17:09:33
+# Date: 2014-09-08 19:13:24
 # Generator: MySQL-Front 5.3  (Build 4.156)
 
 /*!40101 SET NAMES utf8 */;
@@ -71,7 +71,7 @@ CREATE TABLE `cruge_session` (
   `ipaddressout` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idsession`),
   KEY `crugesession_iduser` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cruge_system"
@@ -166,7 +166,7 @@ CREATE TABLE `evento` (
   `estado` enum('ACTIVO','INACTIVO') NOT NULL,
   `descripcion` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "sector"
@@ -256,3 +256,17 @@ CREATE TABLE `participante` (
   CONSTRAINT `fk_persona_sector1` FOREIGN KEY (`sector_id`) REFERENCES `sector` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_subsector1` FOREIGN KEY (`subsector_id`) REFERENCES `subsector` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#
+# Structure for table "evento_participante"
+#
+
+DROP TABLE IF EXISTS `evento_participante`;
+CREATE TABLE `evento_participante` (
+  `evento_id` int(11) NOT NULL,
+  `participante_id` int(11) NOT NULL,
+  KEY `fk_evento_participante_evento1_idx` (`evento_id`),
+  KEY `fk_evento_participante_participante1_idx` (`participante_id`),
+  CONSTRAINT `fk_evento_participante_evento1` FOREIGN KEY (`evento_id`) REFERENCES `evento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_evento_participante_participante1` FOREIGN KEY (`participante_id`) REFERENCES `participante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

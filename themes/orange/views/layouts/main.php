@@ -106,11 +106,20 @@
 
                                     </ul>
                                 </div>
-                            </div>  <div class="panel panel-default">
+                            </div> 
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a   href="<?php print Yii::app()->baseUrl . '/crm/participante'; ?>"><span class="glyphicon glyphicon-user">
                                             </span>Participantes</a>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a   href="<?php print Yii::app()->baseUrl . '/eventos/evento'; ?>"><span class="glyphicon glyphicon-calendar">
+                                            </span>Eventos</a>
                                     </h4>
                                 </div>
                             </div>
