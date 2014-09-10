@@ -126,7 +126,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a   href="<?php print Yii::app()->baseUrl . '/eventos/evento'; ?>"><span class="glyphicon glyphicon-stats">
+                                        <a   href="<?php print Yii::app()->baseUrl . '/eventos/reporte'; ?>"><span class="glyphicon glyphicon-stats">
                                             </span>Reportes</a>
                                     </h4>
                                 </div>
