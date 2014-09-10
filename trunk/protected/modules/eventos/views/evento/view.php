@@ -23,7 +23,6 @@
                         </div>                  
                     </div>
                 </div>
-
             </article>
             <article class="timeline-entry begin">
 
