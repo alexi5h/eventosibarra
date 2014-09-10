@@ -35,9 +35,10 @@ Util::tsRegisterAssetJs('_form.js');
             <?php echo $form->textFieldGroup($model, 'email', array('maxlength' => 45)) ?>
 
             <?php
+            $data_evento = CHtml::listData(Evento::model()->getEventos(), 'id', 'nombre');
+
             if ($model->isNewRecord) {
                 $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
-                $data_evento = CHtml::listData(Evento::model()->getEventos(), 'id', 'nombre');
                 $data_subsector = null;
                 $data_rama_actividad = null;
                 $data_actividad = null;
