@@ -68,22 +68,21 @@ body#login{
 
 /*view del evento*/ 
 
-img
-{
+img {
     vertical-align: middle;
 }
-.img-responsive
-{
+
+.img-responsive {
     display: block;
     height: auto;
     max-width: 100%;
 }
-.img-rounded
-{
+
+.img-rounded {
     border-radius: 3px;
 }
-.img-thumbnail
-{
+
+.img-thumbnail {
     background-color: #fff;
     border: 1px solid #ededf0;
     border-radius: 3px;
@@ -97,12 +96,13 @@ img
     transition: all .2s ease-in-out;
     webkit-transition: all .2s ease-in-out;
 }
-.img-circle
-{
+
+.img-circle {
     border-radius: 50%;
 }
+
 .timeline-centered {
-    position: initial;
+    position: relative;
     margin-bottom: 30px;
 }
 
@@ -130,17 +130,19 @@ img
     display: block;
     width: 4px;
     background: #f5f5f6;
-    left: 50%;
+    /*left: 50%;*/
     top: 20px;
     bottom: 20px;
-    margin-left: -4px;
+    margin-left: 30px;
 }
 
 .timeline-centered .timeline-entry {
     position: relative;
-    width: 50%;
-    float: right;
-    margin-bottom: 70px;
+    /*width: 50%;
+    float: right;*/
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 10px;
     clear: both;
 }
 
@@ -204,7 +206,7 @@ img
 
 .timeline-centered .timeline-entry .timeline-entry-inner {
     position: relative;
-    margin-left: -22px;
+    margin-left: -20px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {
@@ -302,8 +304,8 @@ img
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {
     position: relative;
     background: #f5f5f6;
-    padding: 1.7em;
-    margin-left: 70px;
+    padding: 1em;
+    margin-left: 60px;
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding;
     background-clip: padding-box;
