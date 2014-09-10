@@ -42,5 +42,11 @@ class Participante extends BaseParticipante
     {
         return Yii::t('app', 'Participante|Participantes', $n);
     }
-
+//    select count(t.id),e.id from participante t
+//inner join (
+//           participante_has_evento pe inner join evento e on e.id=pe.evento_id and e.estado='ACTIVO'
+//           ) on pe.participante_id=t.id
+//
+//where t.estado='ACTIVO'
+//group by e.id
 }
