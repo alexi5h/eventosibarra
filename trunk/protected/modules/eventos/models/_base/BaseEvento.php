@@ -35,9 +35,9 @@ abstract class BaseEvento extends AweActiveRecord {
     public function rules() {
         return array(
             array('nombre, fecha_inicio, estado', 'required'),
-            array('nombre, descripcion', 'length', 'max'=>128),
+            array('nombre', 'length', 'max'=>128),
             array('estado', 'length', 'max'=>8),
-            array('fecha_fin', 'safe'),
+            array('fecha_fin, descripcion', 'safe'),
             array('estado', 'in', 'range' => array('ACTIVO','INACTIVO')), // enum,
             array('fecha_fin, descripcion', 'default', 'setOnEmpty' => true, 'value' => null),
             array('id, nombre, fecha_inicio, fecha_fin, estado, descripcion', 'safe', 'on'=>'search'),
