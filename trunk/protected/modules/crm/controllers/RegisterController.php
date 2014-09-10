@@ -13,13 +13,11 @@ class RegisterController extends CController {
         $this->performAjaxValidation($model, 'participante-form');
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];
-//            die(var_dump($_POST['Participante']['evento']));
             if ($model->save()) {
-//                die(var_dump($model->attributes));
                 $model->saveManyMany('eventos', array($ie));
-                die(var_dump('registrado bien'));
-            } {
-                die(var_dump('mal'));
+                $this->redirect(array('register/success/id/' . $model->id . '/ie/' . $ie));
+            } else {
+                $this->redirect(array('register/error/ie/' . $ie));
             }
         }
         $this->render('create', array(
@@ -27,8 +25,14 @@ class RegisterController extends CController {
         ));
     }
 
-    public function actionSuccess($id) {
-        
+    public function actionSuccess($id, $ie) {
+        $modelEvento = Evento::model()->findByPk($ie);
+        $this->render('success', array('evento' => $modelEvento));
+    }
+
+    public function actionError($ie) {
+        $modelEvento = Evento::model()->findByPk($ie);
+        $this->render('error', array('evento' => $modelEvento));
     }
 
     public function actionAjaxGetSubsectorBySector() {

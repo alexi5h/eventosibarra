@@ -9,7 +9,7 @@
         <meta charset="utf-8" />
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/register.css" />
 
         <script>
             var baseUrl = "<?php print Yii::app()->baseUrl . '/'; ?>";
@@ -29,7 +29,6 @@
             </div>
 
         </div>
-        <!--<script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>-->
     </body>
     <!-- END BODY -->
 </html>
