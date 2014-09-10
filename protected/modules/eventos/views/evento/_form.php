@@ -53,7 +53,7 @@
             );
             ?>
 
-            <?php echo $form->textAreaGroup($model, 'descripcion', array('maxlength' => 128)) ?>
+            <?php echo $form->textAreaGroup($model, 'descripcion') ?>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <?php
