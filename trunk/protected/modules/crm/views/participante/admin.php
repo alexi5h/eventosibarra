@@ -20,6 +20,7 @@ $this->menu = array(
                 'id' => 'participante-grid',
                 'type' => 'striped bordered hover advance',
                 'dataProvider' => $model->activos()->search(),
+                'filter' => $model,
                 'columns' => array(
                     'nombres',
                     'apellidos',
@@ -68,13 +69,13 @@ $this->menu = array(
                                 'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
                                 'options' => array('title' => 'Ver Info'),
                                 'imageUrl' => false,
-                                //'url' => 'Yii::app()->createUrl("crm/participante/view",array("id"=>$data->id))',
+                            //'url' => 'Yii::app()->createUrl("crm/participante/view",array("id"=>$data->id))',
                             //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
                             ),
                             'update' => array(
                                 'label' => '<button class="btn btn-primary"><i class="icon-pencil"></i></button>',
                                 'options' => array('title' => 'Actualizar'),
-                                'url'=>'Yii::app()->createUrl("/crm/participante/update/id/".$data->id."/r/0")',
+                                'url' => 'Yii::app()->createUrl("/crm/participante/update/id/".$data->id."/r/0")',
                                 'imageUrl' => false,
                             //'visible' => 'Util::checkAccess(array("action_incidenciaPrioridad_update"))'
                             ),
