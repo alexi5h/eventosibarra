@@ -31,6 +31,7 @@ class Participante extends BaseParticipante {
             'rama_actividad_id' => Yii::t('app', 'Rama de Actividad'),
             'direccion' => Yii::t('app', 'Dirección'),
             'evento_id' => Yii::t('app', 'Evento'),
+            'cedula' => Yii::t('app', 'Cédula'),
         ));
     }
 
