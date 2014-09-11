@@ -42,5 +42,10 @@ class Participante extends BaseParticipante {
     public static function label($n = 1) {
         return Yii::t('app', 'Participante|Participantes', $n);
     }
+    
+//    public function rules() {
+//    return array_merge(parent::rules(), array(
+//        array('evento_id', 'required'),
+//    ));}
 
 }
