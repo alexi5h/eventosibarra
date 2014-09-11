@@ -17,7 +17,20 @@ class ReporteController extends AweController {
     }
 
     public function actionIndex() {
-        $this->render('index');
+        $model = new Reporte;
+        $evento_id = null;
+        $sector_id = null;
+        $subsector_id = null;
+        $rama_actividad_id = null;
+        $actividad_id = null;
+        if (Yii::app()->request->isAjaxRequest) {
+            if (isset($_GET['ajax'])&&$_GET['ajax']=='reporte-grid') {
+                
+            }
+            
+        }
+        $data = $model->search($evento_id, $sector_id, $subsector_id, $rama_actividad_id, $actividad_id);
+        $this->render('index', array('model' => $model, 'data' => $data));
     }
 
 }
