@@ -14,10 +14,10 @@
         <?php
         $data_evento = CHtml::listData(Evento::model()->getEventos(), 'id', 'nombre');
 
-        $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id','nombre');
+        $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', 'nombre');
         $data_subsector = CHtml::listData(Subsector::model()->activos()->findAll(), 'id', 'nombre');
-        $data_rama_actividad = CHtml::listData(RamaActividad::model()->activos()->findAll(), 'id','nombre');
-        $data_actividad = CHtml::listData(Actividad::model()->activos()->findAll(), 'id','nombre');
+        $data_rama_actividad = CHtml::listData(RamaActividad::model()->activos()->findAll(), 'id', 'nombre');
+        $data_actividad = CHtml::listData(Actividad::model()->activos()->findAll(), 'id', 'nombre');
         ?>
         <?php
         echo $form->select2Group(
@@ -103,7 +103,7 @@
         $this->widget('ext.booster.widgets.TbButton', array(
             'label' => Yii::t('AweCrud.app', 'Generar'),
             'htmlOptions' => array(
-                'class'=>'btn-sm btn-danger',
+                'class' => 'btn-sm btn-danger',
                 'onclick' => 'js:update()')
         ));
         ?>
@@ -122,7 +122,8 @@
 ////            'header' => 'Contacto'
 //        ),
                     array(
-                        'value' => '$data["nombre_completo"]',
+//                        'value' => '$data["nombre_completo"]',
+                        'value' => 'CHtml::link($data["nombre_completo"], Yii::app()->createUrl("crm/participante/view",array("id"=>$data["id"])))',
                         'type' => 'raw',
                         'header' => 'Nombre'
                     ),

@@ -24,10 +24,15 @@ class ReporteController extends AweController {
         $rama_actividad_id = null;
         $actividad_id = null;
         if (Yii::app()->request->isAjaxRequest) {
-            if (isset($_GET['ajax'])&&$_GET['ajax']=='reporte-grid') {
-                
+            if (isset($_GET['ajax']) && $_GET['ajax'] == 'reporte-grid') {
+                if (isset($_GET['Reporte'])) {
+                    $evento_id = $_GET['Reporte']['evento_id'];
+                    $sector_id = $_GET['Reporte']['sector_id'];
+                    $subsector_id = $_GET['Reporte']['subsector_id'];
+                    $rama_actividad_id = $_GET['Reporte']['rama_actividad_id'];
+                    $actividad_id = $_GET['Reporte']['actividad_id'];
+                }
             }
-            
         }
         $data = $model->search($evento_id, $sector_id, $subsector_id, $rama_actividad_id, $actividad_id);
         $this->render('index', array('model' => $model, 'data' => $data));
