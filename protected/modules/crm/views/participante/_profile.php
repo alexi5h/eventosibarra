@@ -24,8 +24,10 @@
                             <?php
                             echo "<tr><td>Nombres:</td><td>$model->nombres</td></tr>"
                             . "<tr><td>Apellidos:</td><td>$model->apellidos</td></tr>"
-                            . "<tr><td>Tipo:</td><td>$model->tipo</td></tr>"
+                            . "<tr><td>Cédula:</td><td>$model->cedula</td></tr>"
+                            . "<tr><td>Tipo:</td><td>".$model->tipoParticipante($model->tipo)."</td></tr>"
                             . "<tr><td>Teléfono:</td><td>$model->telefono</td></tr>"
+                            . "<tr><td>Celular:</td><td>$model->celular</td></tr>"
                             . "<tr><td>E-mail:</td><td><a href=\"mailto:$model->email\">$model->email</a></td></tr>"
                             . "<tr><td>Dirección:</td><td>$model->direccion</td></tr>"
                             . "<tr><td>Sector:</td><td>$model->sector</td></tr>"
