@@ -1,3 +1,12 @@
+<?php
+$eventos_id = ParticipanteHasEvento::model()->getEventosParticipante($model->id);
+$eventos = Evento::model()->findAllByPk($eventos_id);
+$array_nombres_eventos = array();
+foreach ($eventos as $ev) {
+    array_push($array_nombres_eventos, $ev['nombre']);
+}
+$nombres_eventos = implode(', ', $array_nombres_eventos);
+?>
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-1 toppad" >
     <div class="panel panel-danger">
         <div class="panel-heading">
@@ -25,7 +34,7 @@
                             echo "<tr><td>Nombres:</td><td>$model->nombres</td></tr>"
                             . "<tr><td>Apellidos:</td><td>$model->apellidos</td></tr>"
                             . "<tr><td>Cédula:</td><td>$model->cedula</td></tr>"
-                            . "<tr><td>Tipo:</td><td>".$model->tipoParticipante($model->tipo)."</td></tr>"
+                            . "<tr><td>Tipo:</td><td>" . $model->tipoParticipante($model->tipo) . "</td></tr>"
                             . "<tr><td>Teléfono:</td><td>$model->telefono</td></tr>"
                             . "<tr><td>Celular:</td><td>$model->celular</td></tr>"
                             . "<tr><td>E-mail:</td><td><a href=\"mailto:$model->email\">$model->email</a></td></tr>"
@@ -34,6 +43,7 @@
                             . "<tr><td>Subsector:</td><td>$model->subsector</td></tr>"
                             . "<tr><td>Rama de Actividad:</td><td>$model->ramaActividad</td></tr>"
                             . "<tr><td>Actividad:</td><td>$model->actividad</td></tr>"
+                            . "<tr><td>Eventos:</td><td>$nombres_eventos</td></tr>"
                             ?>
                         </tbody>
                     </table>
