@@ -23,12 +23,14 @@ $this->menu = array(
                 'columns' => array(
                     'nombres',
                     'apellidos',
+                    'cedula',
 //                array(
 //                    'name' => 'tipo',
 //                    'filter' => array('N' => 'Natural', 'E' => 'Empresa', 'CIA' => 'Compañía Limitada', 'COO' => 'Cooperativa', 'ASO' => 'Asociación',),
 //                ),
                     'telefono',
-                    'email',
+                    'celular',
+                    //'email',
                     array(
                         'name' => 'sector_id',
                         'value' => 'isset($data->sector) ? $data->sector : null',
@@ -49,7 +51,7 @@ $this->menu = array(
                         'value' => 'isset($data->actividad) ? $data->actividad : null',
                         'filter' => CHtml::listData(Actividad::model()->findAll(), 'id', Actividad::representingColumn()),
                     ),
-                    'direccion',
+//                    'direccion',
                     array(
                         'htmlOptions' => array('nowrap' => 'nowrap'),
                         'class' => 'booster.widgets.TbButtonColumn',
