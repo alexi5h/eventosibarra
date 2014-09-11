@@ -160,7 +160,7 @@ CREATE TABLE `cruge_authassignment` (
 DROP TABLE IF EXISTS `evento`;
 CREATE TABLE `evento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(128) NOT NULL,
+  `nombre` varchar(512) NOT NULL,
   `fecha_inicio` datetime NOT NULL,
   `fecha_fin` datetime DEFAULT NULL,
   `estado` enum('ACTIVO','INACTIVO') NOT NULL,
