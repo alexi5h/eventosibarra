@@ -123,6 +123,7 @@
             $this->widget('ext.booster.widgets.TbGridView', array(
                 'id' => 'reporte-grid',
                 'type' => 'striped bordered hover advance',
+                'template' => "{items} {summary}",
                 'dataProvider' => new CArrayDataProvider($data),
                 'columns' => array(
 //        array(
@@ -146,11 +147,11 @@
                         'type' => 'raw',
                         'header' => 'Celular'
                     ),
-                    array(
-                        'value' => '$data["telefono"]',
-                        'type' => 'raw',
-                        'header' => 'Teléfono'
-                    ),
+//                    array(
+//                        'value' => '$data["telefono"]',
+//                        'type' => 'raw',
+//                        'header' => 'Teléfono'
+//                    ),
                     array(
                         'value' => '$data["email"]',
                         'type' => 'raw',
