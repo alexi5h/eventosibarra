@@ -59,7 +59,9 @@ class ParticipanteController extends AweController {
 
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];
+            //die(var_dump($_POST['Participante']['evento_id']));
             if ($model->save()) {
+                $model->saveManyMany('eventos', $_POST['Participante']['evento_id']);
                 if ($r != null) {
                     $this->redirect(array('admin'));
                 } else {

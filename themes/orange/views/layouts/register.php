@@ -29,6 +29,7 @@
             </div>
 
         </div>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.mask.js"></script>
     </body>
     <!-- END BODY -->
 </html>

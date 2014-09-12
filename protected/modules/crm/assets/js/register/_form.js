@@ -9,7 +9,17 @@ $(function() {
         AjaxListaActividades("Participante_rama_actividad_id", "Participante_actividad_id");
 
     });
+    maskAttributes();
 });
+
+function maskAttributes() {
+    $('#Participante_cedula').mask('0000000000');
+    $('#Participante_telefono').mask('000000000');
+    $('#Participante_celular').mask('0000000000');
+    $('#Participante_nombres').mask('SSSSSSSSSSSSSS');
+    $('#Participante_apellidos').mask('SSSSSSSSSSSSSS');
+    //continuar cargando formatos para input
+}
 
 function AjaxListaSubsectores(lista, lista_actualizar)
 {
