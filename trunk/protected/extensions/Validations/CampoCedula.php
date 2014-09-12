@@ -52,5 +52,7 @@ class CampoCedula extends CValidator {
             $this->addError($object, $attribute, 'Cédula tiene un largo incorrecto (debe ser de 10 caracteres)');
         }
     }
+
 }
+
 ?>

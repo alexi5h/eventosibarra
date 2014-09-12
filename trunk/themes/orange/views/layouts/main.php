@@ -42,8 +42,8 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><?php echo Yii::app()->user->name ? Yii::app()->user->name : "Guest" ?><span class="caret"></span></a>
                                     <ul class="dropdown-menu" aria-labelledby="download">
                                         <?php if (!Yii::app()->user->isGuest): ?>
-                                            <li><?php echo CHtml::link('<i class="icon-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
                                             <?php if (Yii::app()->user->checkAccess('admin')): ?>
+                                                <li><?php echo CHtml::link('<i class="icon-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
                                                 <li><?php echo CHtml::link('<i class="icon-cog"></i>&nbsp;&nbsp;Administración', Yii::app()->user->ui->userManagementAdminUrl) ?></li>
                                             <?php endif; ?>
                                             <li><?php echo CHtml::link('<i class="icon-key"></i>&nbsp;&nbsp;Cerrar Sesión', Yii::app()->user->ui->logoutUrl) ?></a></li>
@@ -80,14 +80,16 @@
                 <?php if (!Yii::app()->user->isGuest) : ?>
                     <div class="col-sm-3 col-md-3">
                         <div class="panel-group" id="accordion">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a   href="<?php echo Yii::app()->user->ui->userManagementAdminUrl ?>"><span class="glyphicon glyphicon-wrench">
-                                            </span>Administración</a>
-                                    </h4>
+                            <?php if (Yii::app()->user->isSuperAdmin): ?>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a   href="<?php echo Yii::app()->user->ui->userManagementAdminUrl ?>"><span class="glyphicon glyphicon-wrench">
+                                                </span>Administración</a>
+                                        </h4>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
