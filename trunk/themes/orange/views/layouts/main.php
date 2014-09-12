@@ -145,6 +145,7 @@
 
         </div>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.mask.js"></script>
     </body>
     <!-- END BODY -->
 </html>
