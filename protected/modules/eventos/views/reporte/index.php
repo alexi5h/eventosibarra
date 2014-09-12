@@ -19,96 +19,105 @@
         $data_rama_actividad = CHtml::listData(RamaActividad::model()->activos()->findAll(), 'id', 'nombre');
         $data_actividad = CHtml::listData(Actividad::model()->activos()->findAll(), 'id', 'nombre');
         ?>
-        <?php
-        echo $form->select2Group(
-                $model, 'evento_id', array(
-            'wrapperHtmlOptions' => array(
-                'class' => 'col-sm-8',
-            ),
-            'widgetOptions' => array(
-                'data' => $data_evento ? array(null => ' -- Evento -- ') + $data_evento : array(null => ' -- Ninguno -- '),
-                'asDropDownList' => true,
-                'options' => array(
-                    'tokenSeparators' => array(',', ' ')
-                )
-            )
-                )
-        );
-        ?>
-        <?php
-        echo $form->select2Group(
-                $model, 'sector_id', array(
-            'wrapperHtmlOptions' => array(
-                'class' => 'col-sm-8',
-            ),
-            'widgetOptions' => array(
-                'data' => $data_sector ? array(null => ' -- Sector -- ') + $data_sector : array(null => ' -- Ninguno -- '),
-                'asDropDownList' => true,
-                'options' => array(
-                    'tokenSeparators' => array(',', ' ')
-                )
-            )
-                )
-        );
-        ?>
-        <?php
-        echo $form->select2Group(
-                $model, 'subsector_id', array(
-            'wrapperHtmlOptions' => array(
-                'class' => 'col-sm-8',
-            ),
-            'widgetOptions' => array(
-                'data' => $data_subsector ? array(null => ' -- Subsector -- ') + $data_subsector : array(null => ' -- Ninguno -- '),
-                'asDropDownList' => true,
-                'options' => array(
-                    'tokenSeparators' => array(',', ' ')
-                )
-            )
-                )
-        );
-        ?>
-        <?php
-        echo $form->select2Group(
-                $model, 'rama_actividad_id', array(
-            'wrapperHtmlOptions' => array(
-                'class' => 'col-sm-8',
-            ),
-            'widgetOptions' => array(
-                'data' => $data_rama_actividad ? array(null => ' -- Rama Atividad -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
-                'asDropDownList' => true,
-                'options' => array(
-                    'tokenSeparators' => array(',', ' ')
-                )
-            )
-                )
-        );
-        ?>
-        <?php
-        echo $form->select2Group(
-                $model, 'actividad_id', array(
-            'wrapperHtmlOptions' => array(
-                'class' => 'col-sm-8',
-            ),
-            'widgetOptions' => array(
-                'data' => $data_actividad ? array(null => ' -- Actividad -- ') + $data_actividad : array(null => ' -- Ninguno -- '),
-                'asDropDownList' => true,
-                'options' => array(
-                    'tokenSeparators' => array(',', ' ')
-                )
-            )
-                )
-        );
-        ?>
-        <?php
-        $this->widget('ext.booster.widgets.TbButton', array(
-            'label' => Yii::t('AweCrud.app', 'Generar'),
-            'htmlOptions' => array(
-                'class' => 'btn-sm btn-danger',
-                'onclick' => 'js:update()')
-        ));
-        ?>
-        <?php $this->endWidget(); ?>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">Generar Filtros</div>
+            <div class="panel-body">
+                <?php
+                echo $form->select2Group(
+                        $model, 'evento_id', array(
+                    'wrapperHtmlOptions' => array(
+                        'class' => 'col-sm-8',
+                    ),
+                    'widgetOptions' => array(
+                        'data' => $data_evento ? array(null => ' -- Evento -- ') + $data_evento : array(null => ' -- Ninguno -- '),
+                        'asDropDownList' => true,
+                        'options' => array(
+                            'tokenSeparators' => array(',', ' ')
+                        ),
+                        'htmlOptions' => array(
+                            'data-toogle' => 'tooltip'
+                        )
+                    )
+                        )
+                );
+                ?>
+                <?php
+                echo $form->select2Group(
+                        $model, 'sector_id', array(
+                    'wrapperHtmlOptions' => array(
+                        'class' => 'col-sm-8',
+                    ),
+                    'widgetOptions' => array(
+                        'data' => $data_sector ? array(null => ' -- Sector -- ') + $data_sector : array(null => ' -- Ninguno -- '),
+                        'asDropDownList' => true,
+                        'options' => array(
+                            'tokenSeparators' => array(',', ' ')
+                        )
+                    )
+                        )
+                );
+                ?>
+                <?php
+                echo $form->select2Group(
+                        $model, 'subsector_id', array(
+                    'wrapperHtmlOptions' => array(
+                        'class' => 'col-sm-8',
+                    ),
+                    'widgetOptions' => array(
+                        'data' => $data_subsector ? array(null => ' -- Subsector -- ') + $data_subsector : array(null => ' -- Ninguno -- '),
+                        'asDropDownList' => true,
+                        'options' => array(
+                            'tokenSeparators' => array(',', ' ')
+                        )
+                    )
+                        )
+                );
+                ?>
+                <?php
+                echo $form->select2Group(
+                        $model, 'rama_actividad_id', array(
+                    'wrapperHtmlOptions' => array(
+                        'class' => 'col-sm-8',
+                    ),
+                    'widgetOptions' => array(
+                        'data' => $data_rama_actividad ? array(null => ' -- Rama Atividad -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
+                        'asDropDownList' => true,
+                        'options' => array(
+                            'tokenSeparators' => array(',', ' ')
+                        )
+                    )
+                        )
+                );
+                ?>
+                <?php
+                echo $form->select2Group(
+                        $model, 'actividad_id', array(
+                    'wrapperHtmlOptions' => array(
+                        'class' => 'col-sm-8',
+                    ),
+                    'widgetOptions' => array(
+                        'data' => $data_actividad ? array(null => ' -- Actividad -- ') + $data_actividad : array(null => ' -- Ninguno -- '),
+                        'asDropDownList' => true,
+                        'options' => array(
+                            'tokenSeparators' => array(',', ' ')
+                        )
+                    )
+                        )
+                );
+                ?>
+                <?php
+                $this->widget('ext.booster.widgets.TbButton', array(
+                    'label' => Yii::t('AweCrud.app', 'Generar'),
+                    'htmlOptions' => array(
+                        'class' => 'btn-sm btn-danger',
+                        'onclick' => 'js:update()',
+                        'style'=>'margin-left:12px'
+                        )
+                ));
+                ?>
+                <?php $this->endWidget(); ?>
+            </div>
+        </div>
         <div style='overflow:auto;width:auto' > 
             <?php
             $this->widget('ext.booster.widgets.TbGridView', array(
@@ -140,7 +149,7 @@
                     array(
                         'value' => '$data["telefono"]',
                         'type' => 'raw',
-                        'header' => 'Telefono'
+                        'header' => 'Teléfono'
                     ),
                     array(
                         'value' => '$data["email"]',
