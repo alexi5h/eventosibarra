@@ -5,6 +5,7 @@ $(function() {
                 selected = $(this).find("div").attr('id');
                 $("#" + selected).attr({
                     'data-toogle': 'tooltip',
+                    'data-placement': 'bottom'
                 });
                 $("#" + selected).tooltip('show');
             },
