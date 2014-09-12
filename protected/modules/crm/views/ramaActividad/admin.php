@@ -19,7 +19,7 @@ $this->menu = array(
             <?php
             $this->widget('booster.widgets.TbGridView', array(
                 'id' => 'rama-actividad-grid',
-                'type' => 'striped bordered hover advance',
+                'type' => 'striped  hover advance',
                 'dataProvider' => $model->activos()->search(),
                 'columns' => array(
                     'nombre',
