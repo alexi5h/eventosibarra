@@ -35,8 +35,6 @@ Util::tsRegisterAssetJs('_form.js');
             <?php echo $form->textFieldGroup($model, 'email', array('maxlength' => 45)) ?>
 
             <?php
-            $data_evento = CHtml::listData(Evento::model()->getEventos(), 'id', 'nombre');
-
             if ($model->isNewRecord) {
                 $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
                 $data_subsector = null;
@@ -66,16 +64,27 @@ Util::tsRegisterAssetJs('_form.js');
             }
             ?>
             <?php
+            $data_evento = CHtml::listData(Evento::model()->getEventos(), 'id', 'nombre');
+            if ($model->isNewRecord) {
+                $eventos_id = null;
+            } else {
+                $eventos_id = ParticipanteHasEvento::model()->getEventosParticipante($model->id);
+            }
             echo $form->select2Group(
                     $model, 'evento_id', array(
                 'wrapperHtmlOptions' => array(
                     'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
-                    'data' => $data_evento ? array(null => ' -- Seleccione Evento -- ') + $data_evento : array(null => ' -- Ninguno -- '),
-                    'asDropDownList' => true,
+                    'data' => $data_evento ? $data_evento : null,
+                    'val' => $eventos_id,
+                    'htmlOptions' => array(
+                        'multiple' => 'multiple',
+                    ),
                     'options' => array(
-                        'tokenSeparators' => array(',', ' ')
+                        'placeholder' => $data_evento ? ' -- Seleccione Evento -- ' : ' -- Ninguno -- ',
+                        'width' => '568px',
+                    //'tokenSeparators' => array(',', ' ')
                     )
                 )
                     )
