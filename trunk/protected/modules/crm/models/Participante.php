@@ -71,7 +71,7 @@ class Participante extends BaseParticipante {
             array('cedula', 'ext.Validations.CampoCedula'),
             array('celular, telefono', 'numerical'),
             array('celular', 'length', 'is' => 10),
-            array('telefono', 'length', 'is' => 9, 'message' => 'Teléfono tiene un largo incorrecto (debe incluir código de provincia y tener 9 dígitos)'),
+            //array('telefono', 'length', 'is' => 9, 'message' => 'Teléfono tiene un largo incorrecto (debe incluir código de provincia y tener 9 dígitos)'),
             array('celular', 'compare', 'compareAttribute' => 'telefono', 'operator' => '!=', 'message' => 'Debe ingresar al menos un número de teléfono'),
         ));
     }
