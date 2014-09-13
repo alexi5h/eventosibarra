@@ -20,6 +20,7 @@ $this->menu = array(
             $this->widget('booster.widgets.TbGridView', array(
                 'id' => 'evento-grid',
                 'type' => 'striped  hover advance',
+                'template' => "{items} {summary}",
                 'dataProvider' => $model->activos()->search(),
                 'columns' => array(
                     'nombre',

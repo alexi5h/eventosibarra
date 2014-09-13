@@ -19,6 +19,7 @@ $this->menu = array(
             $this->widget('booster.widgets.TbGridView', array(
                 'id' => 'participante-grid',
                 'type' => 'striped  hover advance',
+                'template' => "{items} {summary}",
                 'dataProvider' => $model->activos()->search(),
                 'filter' => $model,
                 'columns' => array(
