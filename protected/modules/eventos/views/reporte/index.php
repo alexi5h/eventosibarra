@@ -1,6 +1,6 @@
 <?php Util::tsRegisterAssetJs('index.js') ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Evento::label(2) ?> </div>
+    <div class="panel-heading">Gestionar Reportes</div>
     <div class="panel-body">
         <?php
         $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
