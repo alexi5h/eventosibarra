@@ -29,6 +29,11 @@ $(function() {
     $('#Reporte_actividad_id').attr({
         'title': 'Filtrar por Actividad',
     });
+//    console.log($('#reporte-grid > table > tbody').find('td > span'));
+//    spans=$('#reporte-grid > table > tbody').find('td > span');
+    $('span.vacios').parent().attr({
+        'style':'text-align:center',
+    });
 });
 function update() {
 //    console.log($('#reporte-form').serializeArray());
