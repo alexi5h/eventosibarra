@@ -80,7 +80,7 @@
                         'class' => 'col-sm-8',
                     ),
                     'widgetOptions' => array(
-                        'data' => $data_rama_actividad ? array(null => ' -- Rama Atividad -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
+                        'data' => $data_rama_actividad ? array(null => ' -- Rama Actividad -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
                         'asDropDownList' => true,
                         'options' => array(
                             'tokenSeparators' => array(',', ' ')
@@ -111,7 +111,7 @@
                     'htmlOptions' => array(
                         'class' => 'btn-sm btn-danger',
                         'onclick' => 'js:update()',
-                        'style'=>'margin-left:12px'
+                        //'style'=>'margin-left:12px'
                         )
                 ));
                 ?>
@@ -143,7 +143,7 @@
                         'header' => 'Cédula'
                     ),
                     array(
-                        'value' => '$data["celular"]',
+                        'value' => '$data["celular"] ? $data["celular"] : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'type' => 'raw',
                         'header' => 'Celular'
                     ),
@@ -153,9 +153,9 @@
 //                        'header' => 'Teléfono'
 //                    ),
                     array(
-                        'value' => '$data["email"]',
+                        'value' => '$data["email"] ? $data["email"] : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'type' => 'raw',
-                        'header' => 'Email'
+                        'header' => 'E-mail'
                     ),
                     array(
                         'value' => '$data["sector"]',
@@ -168,17 +168,17 @@
                         'header' => 'Subsector'
                     ),
                     array(
-                        'value' => '$data["rama_actividad"]',
+                        'value' => '$data["rama_actividad"] ? $data["rama_actividad"] : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'type' => 'raw',
                         'header' => 'Rama de actividad',
                     ),
                     array(
-                        'value' => '$data["actividad"]',
+                        'value' => '$data["actividad"] ? $data["actividad"] : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'type' => 'raw',
                         'header' => 'Actividad'
                     ),
                     array(
-                        'value' => '$data["direccion"]',
+                        'value' => '$data["direccion"] ? $data["direccion"] : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'type' => 'raw',
                         'header' => 'Dirección',
                     ),

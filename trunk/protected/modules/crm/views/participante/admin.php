@@ -29,8 +29,16 @@ $this->menu = array(
 //                    'name' => 'tipo',
 //                    'filter' => array('N' => 'Natural', 'E' => 'Empresa', 'CIA' => 'Compañía Limitada', 'COO' => 'Cooperativa', 'ASO' => 'Asociación',),
 //                ),
-                    'telefono',
-                    'celular',
+                    array(
+                        'name' => 'telefono',
+                        'value' => '$data->telefono ? $data->telefono : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
+                        'type' => 'raw',
+                    ),
+                    array(
+                        'name' => 'celular',
+                        'value' => '$data->celular ? $data->celular : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
+                        'type' => 'raw',
+                    ),
                     //'email',
                     array(
                         'name' => 'sector_id',
@@ -44,13 +52,15 @@ $this->menu = array(
                     ),
                     array(
                         'name' => 'rama_actividad_id',
-                        'value' => 'isset($data->ramaActividad) ? $data->ramaActividad : null',
+                        'value' => 'isset($data->ramaActividad) ? $data->ramaActividad : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'filter' => CHtml::listData(RamaActividad::model()->findAll(), 'id', RamaActividad::representingColumn()),
+                        'type' => 'raw',
                     ),
                     array(
                         'name' => 'actividad_id',
-                        'value' => 'isset($data->actividad) ? $data->actividad : null',
+                        'value' => '$data->actividad ? $data->actividad : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">--vacío--</span>"',
                         'filter' => CHtml::listData(Actividad::model()->findAll(), 'id', Actividad::representingColumn()),
+                        'type' => 'raw',
                     ),
 //                    'direccion',
                     array(
