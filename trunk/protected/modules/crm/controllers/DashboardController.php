@@ -25,8 +25,7 @@ class DashboardController extends Controller {
      */
     public function actionError() {
         if (Yii::app()->user->isGuest) {
-//            $this->redirect(Yii::app()->user->ui->loginUrl);
-            $this->render('index');
+            $this->redirect(Yii::app()->user->ui->loginUrl);
         }
 //        if ($error = Yii::app()->errorHandler->error) {
 //            if (Yii::app()->request->isAjaxRequest) {
