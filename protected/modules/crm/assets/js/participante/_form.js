@@ -16,8 +16,8 @@ function maskAttributes() {
     $('#Participante_cedula').mask('0000000000');
     $('#Participante_telefono').mask('000000000');
     $('#Participante_celular').mask('0000000000');
-    $('#Participante_nombres').mask('SSSSSSSSSSSSSS');
-    $('#Participante_apellidos').mask('SSSSSSSSSSSSSS');
+    $('#Participante_nombres').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ,{translation: {'A': {pattern: /[a-zA-Z ]/, optional: true}}});
+    $('#Participante_apellidos').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ,{translation: {'A': {pattern: /[a-zA-Z ]/, optional: true}}});
     //continuar cargando formatos para input
 }
 

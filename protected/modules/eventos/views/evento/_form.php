@@ -1,4 +1,5 @@
 <?php
+Util::tsRegisterAssetJs('_form.js');
 /** @var EventoController $this */
 /** @var Evento $model */
 /** @var AweActiveForm $form */
