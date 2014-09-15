@@ -6,6 +6,7 @@ $this->menu = array(
     //'visible' => (Util::checkAccess(array('action_incidenciaPrioridad_create')))
     ),
 );
+Util::tsRegisterAssetJs('admin.js');
 ?>
 <div id="flashMsg"  class="flash-messages">
 
