@@ -20,7 +20,7 @@ $this->menu = array(
             $this->widget('booster.widgets.TbGridView', array(
                 'id' => 'sector-grid',
                 'type' => 'striped  hover advance',
-                'template' => "{items} {summary}",
+                'template' => "{items} {summary} {pager}",
                 'dataProvider' => $model->activos()->search(),
                 'columns' => array(
                     'nombre',

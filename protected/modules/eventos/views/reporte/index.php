@@ -111,8 +111,8 @@
                     'htmlOptions' => array(
                         'class' => 'btn-sm btn-danger',
                         'onclick' => 'js:update()',
-                        //'style'=>'margin-left:12px'
-                        )
+                    //'style'=>'margin-left:12px'
+                    )
                 ));
                 ?>
                 <?php $this->endWidget(); ?>
@@ -123,7 +123,7 @@
             $this->widget('ext.booster.widgets.TbGridView', array(
                 'id' => 'reporte-grid',
                 'type' => 'striped bordered hover advance',
-                'template' => "{items} {summary}",
+                'template' => "{items} {summary} {pager}",
                 'dataProvider' => new CArrayDataProvider($data),
                 'columns' => array(
 //        array(

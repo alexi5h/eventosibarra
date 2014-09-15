@@ -20,7 +20,7 @@ Util::tsRegisterAssetJs('admin.js');
             $this->widget('booster.widgets.TbGridView', array(
                 'id' => 'participante-grid',
                 'type' => 'striped  hover advance',
-                'template' => "{items} {summary}",
+                'template' => "{items} {summary} {pager}",
                 'dataProvider' => $model->activos()->search(),
                 'filter' => $model,
                 'columns' => array(
