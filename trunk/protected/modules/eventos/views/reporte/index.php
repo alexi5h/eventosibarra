@@ -19,9 +19,9 @@
         $data_rama_actividad = CHtml::listData(RamaActividad::model()->activos()->findAll(), 'id', 'nombre');
         $data_actividad = CHtml::listData(Actividad::model()->activos()->findAll(), 'id', 'nombre');
         ?>
-        <div class="panel panel-default">
+<!--        <div class="panel panel-default">
             <div class="panel-heading">Generar Filtros</div>
-            <div class="panel-body">
+            <div class="panel-body">-->
                 <?php
                 echo $form->select2Group(
                         $model, 'evento_id', array(
@@ -116,8 +116,8 @@
                 ));
                 ?>
                 <?php $this->endWidget(); ?>
-            </div>
-        </div>
+<!--            </div>
+        </div>-->
         <div style='overflow:auto;width:auto' > 
             <?php
             $this->widget('ext.booster.widgets.TbGridView', array(
