@@ -15,18 +15,6 @@ $nombres_eventos = implode(', ', $array_nombres_eventos);
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
                 <div class=" col-md-9 col-lg-9 "> 
                     <table class="table table-user-information">
                         <tbody>
@@ -35,14 +23,26 @@ $nombres_eventos = implode(', ', $array_nombres_eventos);
                             . "<tr><td>Apellidos:</td><td>$model->apellidos</td></tr>"
                             . "<tr><td>Cédula:</td><td>$model->cedula</td></tr>"
                             . "<tr><td>Tipo:</td><td>" . $model->tipoParticipante($model->tipo) . "</td></tr>"
-                            . "<tr><td>Teléfono:</td><td>"?><?php echo $model->telefono ? $model->telefono: "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>"?><?php echo "</td></tr>"
-                            . "<tr><td>Celular:</td><td>"?><?php echo $model->celular? $model->celular: "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>"?><?php echo "</td></tr>"
-                            . "<tr><td>E-mail:</td><td>"?><?php echo $model->email ? "<a href=\"mailto:$model->email\">$model->email</a>" : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>"?><?php echo "</td></tr>"
-                            . "<tr><td>Dirección:</td><td>"?><?php echo $model->direccion ? $model->direccion : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>"?><?php echo "</td></tr>"
+                            . "<tr><td>Teléfono:</td><td>"
+                            ?><?php echo $model->telefono ? $model->telefono : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>" ?><?php
+                            echo "</td></tr>"
+                            . "<tr><td>Celular:</td><td>"
+                            ?><?php echo $model->celular ? $model->celular : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>" ?><?php
+                            echo "</td></tr>"
+                            . "<tr><td>E-mail:</td><td>"
+                            ?><?php echo $model->email ? "<a href=\"mailto:$model->email\">$model->email</a>" : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>" ?><?php
+                            echo "</td></tr>"
+                            . "<tr><td>Dirección:</td><td>"
+                            ?><?php echo $model->direccion ? $model->direccion : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>" ?><?php
+                            echo "</td></tr>"
                             . "<tr><td>Sector:</td><td>$model->sector</td></tr>"
                             . "<tr><td>Subsector:</td><td>$model->subsector</td></tr>"
-                            . "<tr><td>Rama de Actividad:</td><td>"?><?php echo $model->ramaActividad ? $model->ramaActividad: "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>"?><?php echo "</td></tr>"
-                            . "<tr><td>Actividad:</td><td>"?><?php echo $model->actividad ? $model->actividad: "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>"?><?php echo "</td></tr>"
+                            . "<tr><td>Rama de Actividad:</td><td>"
+                            ?><?php echo $model->ramaActividad ? $model->ramaActividad : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>" ?><?php
+                            echo "</td></tr>"
+                            . "<tr><td>Actividad:</td><td>"
+                            ?><?php echo $model->actividad ? $model->actividad : "<span style=\"color:#EBBBAA; font-style:italic\" class=\"vacios\">No asignado</span>" ?><?php
+                            echo "</td></tr>"
                             . "<tr><td>Eventos:</td><td>$nombres_eventos</td></tr>"
                             ?>
                         </tbody>
