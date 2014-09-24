@@ -27,7 +27,7 @@
                     <div class="container">
                         <div class="navbar-header">
                             <a href="<?php echo Yii::app()->homeUrl ?>" class="navbar-brand">
-                                Primer prototipo
+                                <img height="30" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo.png" alt="">
                             </a>
                             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                                 <span class="icon-bar"></span>
