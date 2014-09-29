@@ -25,6 +25,7 @@ return array(
         'application.modules.crm.models.*',
 //        eventos
         'application.modules.eventos.models.*',
+        'application.vendors.phpexcel.PHPExcel',
     ),
     'modules' => array(
         'crm',

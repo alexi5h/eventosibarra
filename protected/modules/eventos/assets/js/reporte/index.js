@@ -1,7 +1,7 @@
 var selected = null;
-$(function() {
+$(function () {
     $(".form-group").hover(
-            function() {
+            function () {
                 selected = $(this).find("div").attr('id');
                 $("#" + selected).attr({
                     'data-toogle': 'tooltip',
@@ -9,7 +9,7 @@ $(function() {
                 });
                 $("#" + selected).tooltip('show');
             },
-            function() {
+            function () {
                 selected = $(this).find("div").attr('id');
                 $("#" + selected).tooltip('hide');
             }
@@ -32,7 +32,7 @@ $(function() {
 //    console.log($('#reporte-grid > table > tbody').find('td > span'));
 //    spans=$('#reporte-grid > table > tbody').find('td > span');
     $('span.vacios').parent().attr({
-        'style':'text-align:center',
+        'style': 'text-align:center',
     });
 });
 function update() {
@@ -40,5 +40,18 @@ function update() {
 
     $.fn.yiiGridView.update('reporte-grid', {
         data: $('#reporte-form').serialize(),
+        url: baseUrl + 'eventos/reporte'
     });
+//    $('#reporte-form').attr('action','#');
+
+}
+
+//Exportar a excel
+function ExporCont() {
+    $('#rep_evento_id').val($('#Reporte_evento_id').val());
+    $('#rep_sector_id').val($('#Reporte_sector_id').val());
+    $('#rep_subsector_id').val($('#Reporte_subsector_id').val());
+    $('#rep_rama_actividad_id').val($('#Reporte_rama_actividad_id').val());
+    $('#rep_actividad_id').val($('#Reporte_actividad_id').val());
+    $('#reporte').submit();
 }
