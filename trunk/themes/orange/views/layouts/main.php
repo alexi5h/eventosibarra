@@ -39,8 +39,8 @@
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><?php echo Yii::app()->user->name ? Yii::app()->user->name : "Guest" ?><span class="caret"></span></a>
-                                    <ul class="dropdown-menu" aria-labelledby="download">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" style="color:black" href="#" id="download"><?php echo Yii::app()->user->name ? Yii::app()->user->name : "Guest" ?><span class="caret"></span></a>
+                                    <ul class="dropdown-menu"  aria-labelledby="download">
                                         <?php if (!Yii::app()->user->isGuest): ?>
                                             <?php if (Yii::app()->user->checkAccess('admin')): ?>
                                                 <li><?php echo CHtml::link('<i class="icon-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
