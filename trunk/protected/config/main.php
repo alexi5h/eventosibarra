@@ -6,7 +6,7 @@
 // CWebApplication properties can be configured here.
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Primer prototipo',
+    'name' => 'Eventos Ibarra',
     'language' => 'es',
     'theme' => 'orange',
     // preloading 'log' component
