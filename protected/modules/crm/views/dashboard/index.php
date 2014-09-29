@@ -5,7 +5,7 @@ $this->pageTitle = Yii::app()->name;
 ?>
 <div class="row">       
     <div class="col-lg-10 col-lg-offset-1">
-        <h1>Bienvenidos al Primer prototipo </h1>
+        <h1>Eventos Ibarra</h1>
 
         <?php
         if (Yii::app()->user->isGuest) {
