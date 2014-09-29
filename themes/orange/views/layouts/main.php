@@ -10,8 +10,8 @@
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo3.ico" type="image/x-icon">
-        <link rel="icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo3.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/favicon.ico" type="image/x-icon">
 
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
 
