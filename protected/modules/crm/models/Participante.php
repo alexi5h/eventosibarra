@@ -65,15 +65,38 @@ class Participante extends BaseParticipante {
         return Yii::t('app', 'Participante|Participantes', $n);
     }
 
+//    public function rules() {
+//        return array_merge(parent::rules(), array(
+//            array('evento_id', 'required'),
+//            array('cedula', 'ext.Validations.CampoCedula'),
+//            array('celular, telefono', 'numerical'),
+//            array('celular', 'length', 'is' => 10),
+//            //array('telefono', 'length', 'is' => 9, 'message' => 'Teléfono tiene un largo incorrecto (debe incluir código de provincia y tener 9 dígitos)'),
+//            array('celular', 'compare', 'compareAttribute' => 'telefono', 'operator' => '!=', 'message' => 'Debe ingresar al menos un número de teléfono'),
+//        ));
+//    }
+
     public function rules() {
-        return array_merge(parent::rules(), array(
+        return array(
+            array('nombres, apellidos, tipo, sector_id, subsector_id', 'required'),
+            array('sector_id, subsector_id, rama_actividad_id, actividad_id', 'numerical', 'integerOnly' => true),
+            array('email', 'email'),
+            array('nombres, apellidos', 'length', 'max' => 128),
+            array('tipo', 'length', 'max' => 3),
+            array('telefono, email, celular', 'length', 'max' => 45),
+            array('cedula', 'length', 'max' => 20),
+            array('estado', 'length', 'max' => 8),
+            array('direccion', 'safe'),
+            array('tipo', 'in', 'range' => array('N', 'E', 'CIA', 'COO', 'ASO')), // enum,
+            array('estado', 'in', 'range' => array('ACTIVO', 'INACTIVO')), // enum,
+            array('telefono, email, direccion, celular, estado, rama_actividad_id, actividad_id', 'default', 'setOnEmpty' => true, 'value' => null),
+            array('id, nombres, apellidos, tipo, telefono, email, direccion, cedula, celular, estado, sector_id, subsector_id, rama_actividad_id, actividad_id', 'safe', 'on' => 'search'),
             array('evento_id', 'required'),
             array('cedula', 'ext.Validations.CampoCedula'),
             array('celular, telefono', 'numerical'),
             array('celular', 'length', 'is' => 10),
-            //array('telefono', 'length', 'is' => 9, 'message' => 'Teléfono tiene un largo incorrecto (debe incluir código de provincia y tener 9 dígitos)'),
             array('celular', 'compare', 'compareAttribute' => 'telefono', 'operator' => '!=', 'message' => 'Debe ingresar al menos un número de teléfono'),
-        ));
+        );
     }
 
 }

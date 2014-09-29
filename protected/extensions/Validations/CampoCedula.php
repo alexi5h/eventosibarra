@@ -5,10 +5,11 @@ class CampoCedula extends CValidator {
     protected function validateAttribute($object, $attribute) {
         $ncedula = $object->$attribute;
         $c = substr($ncedula, 0, 2);
-        if (strlen($ncedula) == 10) {
+//        var_dump($ncedula);
+        if (($ncedula != '' ) && (strlen($ncedula) == 10)) {
             if ($c >= '1' && $c <= '24') {//Pertenece a alguna provincia
                 if ($ncedula[2] < 6) {//3er dígito menor a 6
-                    //Comprobar último dígito
+//Comprobar último dígito
                     $n = array(9);
                     $cont = 2;
                     $suma = 0;
@@ -48,7 +49,7 @@ class CampoCedula extends CValidator {
             } else {
                 $this->addError($object, $attribute, 'Número de cédula no válido (verifique los primeros 2 dígitos)');
             }
-        } else {
+        } else if (($ncedula != '' ) && (strlen($ncedula) < 10)) {
             $this->addError($object, $attribute, 'Cédula tiene un largo incorrecto (debe ser de 10 caracteres)');
         }
     }
