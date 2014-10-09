@@ -34,6 +34,7 @@ class ParticipanteController extends AweController {
         $this->admin = false;
         $model = new Participante;
         $model->estado = Participante::ESTADO_ACTIVO;
+        $model->fecha_creacion=  Util::FechaActual();
         $this->performAjaxValidation($model, 'participante-form');
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];

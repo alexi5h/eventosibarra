@@ -19,6 +19,7 @@
  * @property string $cedula
  * @property string $celular
  * @property string $estado
+ * @property string $fecha_creacion
  * @property integer $sector_id
  * @property integer $subsector_id
  * @property integer $rama_actividad_id
@@ -58,7 +59,7 @@ abstract class BaseParticipante extends AweActiveRecord {
             array('tipo', 'in', 'range' => array('N','E','CIA','COO','ASO')), // enum,
             array('estado', 'in', 'range' => array('ACTIVO','INACTIVO')), // enum,
             array('telefono, email, direccion, celular, estado, rama_actividad_id, actividad_id', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('id, nombres, apellidos, tipo, telefono, email, direccion, cedula, celular, estado, sector_id, subsector_id, rama_actividad_id, actividad_id', 'safe', 'on'=>'search'),
+            array('id, nombres, apellidos, tipo, telefono, email, direccion, cedula, celular, estado, fecha_creacion, sector_id, subsector_id, rama_actividad_id, actividad_id', 'safe', 'on'=>'search'),
         );
     }
 
@@ -87,6 +88,7 @@ abstract class BaseParticipante extends AweActiveRecord {
                 'cedula' => Yii::t('app', 'Cedula'),
                 'celular' => Yii::t('app', 'Celular'),
                 'estado' => Yii::t('app', 'Estado'),
+                'fecha_creacion' => Yii::t('app', 'Fecha Creacion'),
                 'sector_id' => Yii::t('app', 'Sector'),
                 'subsector_id' => Yii::t('app', 'Subsector'),
                 'rama_actividad_id' => Yii::t('app', 'Rama Actividad'),
@@ -112,6 +114,7 @@ abstract class BaseParticipante extends AweActiveRecord {
         $criteria->compare('cedula', $this->cedula, true);
         $criteria->compare('celular', $this->celular, true);
         $criteria->compare('estado', $this->estado, true);
+        $criteria->compare('fecha_creacion', $this->fecha_creacion, true);
         $criteria->compare('sector_id', $this->sector_id);
         $criteria->compare('subsector_id', $this->subsector_id);
         $criteria->compare('rama_actividad_id', $this->rama_actividad_id);
@@ -124,6 +127,12 @@ abstract class BaseParticipante extends AweActiveRecord {
 
     public function behaviors() {
         return array_merge(array(
+            'CTimestampBehavior' => array(
+                'class' => 'zii.behaviors.CTimestampBehavior',
+                'createAttribute' => 'fecha_creacion',
+                'updateAttribute' => null,
+                'timestampExpression' => new CDbExpression('NOW()'),
+            )
         ), parent::behaviors());
     }
 }

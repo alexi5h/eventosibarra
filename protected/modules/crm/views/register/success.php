@@ -14,7 +14,7 @@
                 $this->widget('ext.booster.widgets.TbButton', array(
                     'label' => Yii::t('AweCrud.app', 'Finalizar'),
                     'buttonType' => 'link',
-                    'url' => 'http://www.ibarra.gob.ec/'
+                    'url' => Yii::app()->baseUrl . '/crm/register/participant/ie/' . $evento->id,
                 ));
                 ?>
             </div>
