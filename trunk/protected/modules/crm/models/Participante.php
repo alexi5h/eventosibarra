@@ -38,6 +38,8 @@ class Participante extends BaseParticipante {
             'direccion' => Yii::t('app', 'Dirección'),
             'evento_id' => Yii::t('app', 'Evento'),
             'cedula' => Yii::t('app', 'Cédula'),
+            'sector_id' => Yii::t('app', 'Sector Económico'),
+            'subsector_id' => Yii::t('app', 'Subsector Económico'),
         ));
     }
 
@@ -85,6 +87,7 @@ class Participante extends BaseParticipante {
             array('tipo', 'length', 'max' => 3),
             array('telefono, email, celular', 'length', 'max' => 45),
             array('cedula', 'length', 'max' => 20),
+            array('cedula', 'unique'),
             array('estado', 'length', 'max' => 8),
             array('direccion', 'safe'),
             array('tipo', 'in', 'range' => array('N', 'E', 'CIA', 'COO', 'ASO')), // enum,

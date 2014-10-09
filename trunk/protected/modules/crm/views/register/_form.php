@@ -29,6 +29,7 @@ echo $form->dropDownListGroup($model, 'tipo', array('wrapperHtmlOptions' => arra
 <?php echo $form->textFieldGroup($model, 'telefono', array('maxlength' => 45)) ?>
 
 <?php echo $form->textFieldGroup($model, 'email', array('maxlength' => 45)) ?>
+<?php echo $form->textAreaGroup($model, 'direccion', array('rows' => 3, 'cols' => 50)) ?>
 
 <?php
 if ($model->isNewRecord) {
@@ -66,7 +67,7 @@ echo $form->select2Group(
         'class' => 'col-sm-8 ',
     ),
     'widgetOptions' => array(
-        'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
+        'data' => $data_sector ? array(null => ' -- Seleccione el sector de su actividad económica -- ') + $data_sector : array(null => ' -- Ninguno -- '),
         'asDropDownList' => true,
         'options' => array(
             'tokenSeparators' => array(',', ' '),
@@ -100,7 +101,7 @@ echo $form->select2Group(
         'class' => 'col-sm-8',
     ),
     'widgetOptions' => array(
-        'data' => $data_rama_actividad ? array(null => ' -- Seleccione -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
+        'data' => $data_rama_actividad ? array(null => ' -- Seleccione -- ') + $data_rama_actividad : array(null => ' -- opcional -- '),
         'asDropDownList' => true,
         'options' => array(
             'tokenSeparators' => array(',', ' '),
@@ -118,7 +119,7 @@ echo $form->select2Group(
         'class' => 'col-sm-8',
     ),
     'widgetOptions' => array(
-        'data' => $data_actividad ? array(null => ' -- Seleccione -- ') + $data_actividad : array(null => ' -- Ninguno -- '),
+        'data' => $data_actividad ? array(null => ' -- Seleccione -- ') + $data_actividad : array(null => ' -- opcional -- '),
         'asDropDownList' => true,
         'options' => array(
             'tokenSeparators' => array(',', ' '),
@@ -128,7 +129,6 @@ echo $form->select2Group(
         )
 );
 ?>
-<?php echo $form->textAreaGroup($model, 'direccion', array('rows' => 3, 'cols' => 50)) ?>
 
 <div class="form-group">
     <div class="col-lg-10 col-lg-offset-2">

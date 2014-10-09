@@ -9,6 +9,10 @@ $(function () {
         AjaxListaActividades("Participante_rama_actividad_id", "Participante_actividad_id");
 
     });
+    $('#Participante_sector_id > option[value="1"]').html('Primario - (Actividades relacionadas con recursos de la naturaleza)');
+    $('#Participante_sector_id > option[value="2"]').html('Secundario - (Actividades relacionadas con transformación de materia prima)');
+    $('#Participante_sector_id > option[value="3"]').html('Terciario - (Actividades que ofrecen servicios a las personas)');
+    $('#Participante_sector_id > option[value="4"]').html('Cuaternario - (Actividades relacionadas con investigación)');
     maskAttributes();
 });
 
@@ -16,8 +20,8 @@ function maskAttributes() {
     $('#Participante_cedula').mask('0000000000');
     $('#Participante_telefono').mask('000000000');
     $('#Participante_celular').mask('0000000000');
-    $('#Participante_nombres').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ,{translation: {'A': {pattern: /[a-zA-Z ]/, optional: true}}});
-    $('#Participante_apellidos').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ,{translation: {'A': {pattern: /[a-zA-Z ]/, optional: true}}});
+    $('#Participante_nombres').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ,{translation: {'A': {pattern: /[A-Z Ñ]/, optional: true}}, placeholder: 'Nombres (solo mayúsculas)'});
+    $('#Participante_apellidos').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ,{translation: {'A': {pattern: /[A-Z Ñ]/, optional: true}}, placeholder: 'Apellidos (solo mayúsculas)'});
     //continuar cargando formatos para input
 }
 

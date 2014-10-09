@@ -33,7 +33,7 @@ Util::tsRegisterAssetJs('_form.js');
             <?php echo $form->textFieldGroup($model, 'telefono', array('maxlength' => 45)) ?>
 
             <?php echo $form->textFieldGroup($model, 'email', array('maxlength' => 45)) ?>
-
+            <?php echo $form->textAreaGroup($model, 'direccion', array('rows' => 3, 'cols' => 50)) ?>
             <?php
             if ($model->isNewRecord) {
                 $data_sector = CHtml::listData(Sector::model()->activos()->findAll(), 'id', Sector::representingColumn());
@@ -90,6 +90,7 @@ Util::tsRegisterAssetJs('_form.js');
                     )
             );
             ?>
+<!--            <p class="note">Seleccione su actividad económica</p>-->
             <?php
             echo $form->select2Group(
                     $model, 'sector_id', array(
@@ -97,7 +98,7 @@ Util::tsRegisterAssetJs('_form.js');
                     'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
-                    'data' => $data_sector ? array(null => ' -- Seleccione -- ') + $data_sector : array(null => ' -- Ninguno -- '),
+                    'data' => $data_sector ? array(null => ' -- Seleccione el sector de su actividad económica -- ') + $data_sector : array(null => ' -- Ninguno -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
@@ -129,7 +130,7 @@ Util::tsRegisterAssetJs('_form.js');
                     'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
-                    'data' => $data_rama_actividad ? array(null => ' -- Seleccione -- ') + $data_rama_actividad : array(null => ' -- Ninguno -- '),
+                    'data' => $data_rama_actividad ? array(null => ' -- Seleccione -- ') + $data_rama_actividad : array(null => ' -- opcional -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
@@ -145,7 +146,7 @@ Util::tsRegisterAssetJs('_form.js');
                     'class' => 'col-sm-8',
                 ),
                 'widgetOptions' => array(
-                    'data' => $data_actividad ? array(null => ' -- Seleccione -- ') + $data_actividad : array(null => ' -- Ninguno -- '),
+                    'data' => $data_actividad ? array(null => ' -- Seleccione -- ') + $data_actividad : array(null => ' -- opcional -- '),
                     'asDropDownList' => true,
                     'options' => array(
                         'tokenSeparators' => array(',', ' ')
@@ -154,7 +155,6 @@ Util::tsRegisterAssetJs('_form.js');
                     )
             );
             ?>
-            <?php echo $form->textAreaGroup($model, 'direccion', array('rows' => 3, 'cols' => 50)) ?>
 
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">

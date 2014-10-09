@@ -10,6 +10,7 @@ class RegisterController extends CController {
         $model = new Participante;
         $model->evento_id = $ie;
         $model->estado = Participante::ESTADO_ACTIVO;
+        $model->fecha_creacion=  Util::FechaActual();
         $this->performAjaxValidation($model, 'participante-form');
         if (isset($_POST['Participante'])) {
             $model->attributes = $_POST['Participante'];
