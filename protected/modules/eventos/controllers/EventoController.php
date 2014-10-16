@@ -1,6 +1,7 @@
 <?php
 
-class EventoController extends AweController {
+class EventoController extends AweController
+{
 
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -10,7 +11,8 @@ class EventoController extends AweController {
     public $admin = false;
     public $defaultAction = 'admin';
 
-    public function filters() {
+    public function filters()
+    {
         return array(
             array('CrugeAccessControlFilter'),
         );
@@ -20,7 +22,8 @@ class EventoController extends AweController {
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
@@ -30,7 +33,8 @@ class EventoController extends AweController {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Evento;
         $model->estado = Evento::ESTADO_ACTIVO;
         $this->performAjaxValidation($model, 'evento-form');
@@ -61,7 +65,8 @@ class EventoController extends AweController {
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->loadModel($id);
         $model->fecha_inicio = Util::FormatDate($model->fecha_inicio, 'd/m/Y');
         $model->fecha_fin = Util::FormatDate($model->fecha_fin, 'd/m/Y');
@@ -93,7 +98,8 @@ class EventoController extends AweController {
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
             Evento::model()->updateByPk($id, array('estado' => Evento::ESTADO_INACTIVO));
@@ -107,7 +113,8 @@ class EventoController extends AweController {
     /**
      * Manages all models.
      */
-    public function actionAdmin() {
+    public function actionAdmin()
+    {
         $model = new Evento('search');
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Evento']))
@@ -121,7 +128,8 @@ class EventoController extends AweController {
     /**
      * Manages all models.
      */
-    public function actionGenerateUrl() {
+    public function actionGenerateUrl()
+    {
         $model = new Evento('search');
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Evento']))
@@ -137,7 +145,8 @@ class EventoController extends AweController {
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the ID of the model to be loaded
      */
-    public function loadModel($id, $modelClass = __CLASS__) {
+    public function loadModel($id, $modelClass = __CLASS__)
+    {
         $model = Evento::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -148,7 +157,8 @@ class EventoController extends AweController {
      * Performs the AJAX validation.
      * @param CModel the model to be validated
      */
-    protected function performAjaxValidation($model, $form = null) {
+    protected function performAjaxValidation($model, $form = null)
+    {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'evento-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
